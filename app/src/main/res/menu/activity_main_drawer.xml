@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_avaliacaoABC" android:title="@string/menu_avaliacaoABC">
+            <menu>
+                <item
+                    android:id="@+id/nav_viasAereas"
+                    android:icon="@drawable/ic_padrao"
+                    android:title="@string/menu_viasAereas" />
+
+                <item
+                    android:id="@+id/nav_AvaliacaoResp"
+                    android:icon="@drawable/ic_padrao"
+                    android:title="@string/menu_viasRespiratorias" />
+
+                <item
+                    android:id="@+id/nav_viasCirculatorias"
+                    android:icon="@drawable/ic_padrao"
+                    android:title="@string/menu_viasCirculatórias" />
+            </menu>
+        </item>
+
+        <item android:id="@+id/nav_paciente" android:title="Paciente">
+            <menu>
+                <item
+                    android:id="@+id/nav_registroPacinete"
+                    android:icon="@drawable/ic_padrao"
+                    android:title="@string/menu_registroinfo" />
+            </menu>
+        </item>
+
+        <item android:id="@+id/nav_avaliacaoInicial" android:title="Avaliação inicial">
+            <menu>
+                <item
+                    android:id="@+id/nav_sinaisVitais"
+                    android:icon="@drawable/ic_padrao"
+                    android:title="@string/menu_sinaisVitais" />
+
+                <item android:id="@+id/nav_exameFisico" android:title="@string/menu_exameFisico">
+                    <item
+                        android:id="@+id/nav_exameNeuro"
+                        android:icon="@drawable/ic_padrao"
+                        android:title="@string/menu_exameFisicoNeuro" />
+
+                    <item
+                        android:id="@+id/nav_exameResp"
+                        android:icon="@drawable/ic_padrao"
+                        android:title="@string/menu_exameFisicoResp" />
+
+                    <item
+                        android:id="@+id/nav_exameCardio"
+                        android:icon="@drawable/ic_padrao"
+                        android:title="@string/menu_exameFisicoCardioVascular" />
+
+                    <item
+                        android:id="@+id/nav_exameUrinario"
+                        android:icon="@drawable/ic_padrao"
+                        android:title="@string/menu_exameFisicoUrinario" />
+
+                    <item
+                        android:id="@+id/nav_sitioCirurgico"
+                        android:icon="@drawable/ic_padrao"
+                        android:title="@string/menu_exameFisicoSitoCirurgico" />
+
+                </item>
+            </menu>
+        </item>
+
+
+    </group>
+
+</menu>
