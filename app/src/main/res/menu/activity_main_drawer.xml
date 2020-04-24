@@ -3,6 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_padrao"
+            android:title="@string/menu_home"
+            />
+
         <item android:id="@+id/nav_avaliacaoABC" android:title="@string/menu_avaliacaoABC">
             <menu>
                 <item
@@ -25,18 +31,14 @@
         <item android:id="@+id/nav_paciente" android:title="Paciente">
             <menu>
                 <item
-                    android:id="@+id/nav_registroPacinete"
+                    android:id="@+id/nav_registroPaciente"
                     android:icon="@drawable/ic_padrao"
                     android:title="@string/menu_registroinfo" />
             </menu>
         </item>
 
-        <item android:id="@+id/nav_avaliacaoInicial" android:title="Avaliação inicial">
+        <item android:id="@+id/nav_avaliacaoInicial" android:title="@string/menu_sinaisVitais">
             <menu>
-                <item
-                    android:id="@+id/nav_sinaisVitais"
-                    android:icon="@drawable/ic_padrao"
-                    android:title="@string/menu_sinaisVitais" />
 
                 <item android:id="@+id/nav_exameFisico" android:title="@string/menu_exameFisico">
                     <item

@@ -4,6 +4,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -35,6 +40,69 @@ public class PerguntaAdapter extends RecyclerView.Adapter<PerguntaAdapter.MyView
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Pergunta pergunta = perguntas.get(position);
         holder.pergunta.setText(pergunta.getPergunta());
+        holder.btProx.setOnClickListener(pergunta.getEventoProx());
+        holder.btAnt.setOnClickListener(pergunta.getEventoAnterior());
+
+        if(pergunta.getEventoSim() != null)
+            holder.btSim.setOnClickListener(pergunta.getEventoSim());
+
+        if(pergunta.getTipo().equals(Pergunta.YESNO)){
+            holder.rgAllButtons.setVisibility(View.GONE);
+            holder.viewOpcoes.setVisibility(View.GONE);
+        }else if(pergunta.getTipo().equals(Pergunta.RADIO)){
+            holder.viewOpcoes.setVisibility(View.VISIBLE);
+
+            for (int i = 0; i < pergunta.getOpcoesRb().size() ; i++) {
+                holder.rgAllButtons.addView(pergunta.getOpcoesRb().get(i));
+            }
+            holder.btNao.setVisibility(View.GONE);
+            holder.btSim.setVisibility(View.GONE);
+        }else if(pergunta.getTipo().equals(Pergunta.CHECK)){
+            holder.rgAllButtons.setVisibility(View.GONE);
+            holder.viewOpcoes.setVisibility(View.VISIBLE);
+            for (int i = 0; i < pergunta.getOpcoesCK().size() ; i++) {
+                holder.viewOpcoes.addView(pergunta.getOpcoesCK().get(i));
+            }
+            holder.btNao.setVisibility(View.GONE);
+            holder.btSim.setVisibility(View.GONE);
+        }else if(pergunta.getTipo().equals(Pergunta.RGINPUT)){
+            holder.viewOpcoes.setVisibility(View.VISIBLE);
+            holder.rgAllButtons.setVisibility(View.VISIBLE);
+            for (int i = 0; i < pergunta.getOpcoesInput().size() ; i++) {
+                holder.viewOpcoes.addView(pergunta.getOpcoesInput().get(i));
+            }
+
+            for (int i = 0; i < pergunta.getOpcoesRb().size() ; i++) {
+                holder.rgAllButtons.addView(pergunta.getOpcoesRb().get(i));
+            }
+            holder.btNao.setVisibility(View.GONE);
+            holder.btSim.setVisibility(View.GONE);
+        }else if(pergunta.getTipo().equals(Pergunta.CKINPUT)){
+            holder.viewOpcoes.setVisibility(View.VISIBLE);
+            holder.rgAllButtons.setVisibility(View.GONE);
+
+            for (int i = 0; i < pergunta.getOpcoesInput().size() ; i++) {
+                holder.viewOpcoes.addView(pergunta.getOpcoesInput().get(i));
+            }
+
+            for (int i = 0; i < pergunta.getOpcoesCK().size() ; i++) {
+                holder.viewOpcoes.addView(pergunta.getOpcoesCK().get(i));
+            }
+            holder.btNao.setVisibility(View.GONE);
+            holder.btSim.setVisibility(View.GONE);
+        }else if(pergunta.getTipo().equals(Pergunta.INPUT)){
+            holder.viewOpcoes.setVisibility(View.VISIBLE);
+            holder.rgAllButtons.setVisibility(View.GONE);
+
+            for (int i = 0; i < pergunta.getOpcoesInput().size() ; i++) {
+                holder.viewOpcoes.addView(pergunta.getOpcoesInput().get(i));
+                holder.pergunta.requestFocus();
+            }
+
+            holder.btNao.setVisibility(View.GONE);
+            holder.btSim.setVisibility(View.GONE);
+        }
+
     }
 
     @Override
@@ -47,6 +115,10 @@ public class PerguntaAdapter extends RecyclerView.Adapter<PerguntaAdapter.MyView
         private TextView pergunta;
         private Button btSim;
         private Button btNao;
+        private Button btProx;
+        private Button btAnt;
+        private RadioGroup rgAllButtons;
+        private LinearLayout viewOpcoes;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -54,7 +126,12 @@ public class PerguntaAdapter extends RecyclerView.Adapter<PerguntaAdapter.MyView
             pergunta = itemView.findViewById(R.id.textPergunta);
             btSim = itemView.findViewById(R.id.btSim);
             btNao = itemView.findViewById(R.id.btNao);
+            btProx = itemView.findViewById(R.id.btProximo);
+            btAnt = itemView.findViewById(R.id.btAnterior);
+            rgAllButtons = itemView.findViewById(R.id.rgAllButtons);
+            viewOpcoes = itemView.findViewById(R.id.viewOpcoes);
         }
+
     }
 
 }

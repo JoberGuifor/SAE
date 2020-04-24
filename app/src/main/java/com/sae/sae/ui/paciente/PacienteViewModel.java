@@ -1,14 +1,14 @@
-package com.sae.sae.ui.home;
+package com.sae.sae.ui.paciente;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class PacienteViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public PacienteViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("SAE");
     }

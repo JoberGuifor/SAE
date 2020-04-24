@@ -11,29 +11,7 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home">
 
-        <action
-            android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
-            app:destination="@id/nav_home_second" />
     </fragment>
-    <fragment
-        android:id="@+id/nav_home_second"
-        android:name="com.sae.sae.ui.home.HomeSecondFragment"
-        android:label="@string/home_second"
-        tools:layout="@layout/fragment_home_second">
-        <action
-            android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
-            app:destination="@id/nav_home" />
-
-        <argument
-            android:name="myArg"
-            app:argType="string" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.sae.sae.ui.gallery.GalleryFragment"
-        android:label="@string/menu_viasAereas"
-        tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_viasAereas"
@@ -43,18 +21,52 @@
 
     <fragment
         android:id="@+id/nav_AvaliacaoResp"
-        android:name="com.sae.sae.ui.perguntas.PerguntaFragment"
+        android:name="com.sae.sae.ui.perguntas.PerguntaFragmentAvaResp"
         android:label="@string/menu_avaliacaoABC"
         tools:layout="@layout/fragment_pergunta"/>
 
-    <navigation
-        android:id="@+id/navigation"
-        app:startDestination="@id/nav_slideshow" >
-        <fragment
-            android:id="@+id/nav_slideshow"
-            android:name="com.sae.sae.ui.slideshow.SlideshowFragment"
-            android:label="@string/menu_sinaisVitais"
-            tools:layout="@layout/fragment_slideshow" />
-    </navigation>
+    <fragment
+        android:id="@+id/nav_viasCirculatorias"
+        android:name="com.sae.sae.ui.perguntas.PerguntaFragmentAvaCirculacao"
+        android:label="@string/menu_avaliacaoABC"
+        tools:layout="@layout/fragment_pergunta"/>
+
+    <fragment
+        android:id="@+id/nav_exameNeuro"
+        android:name="com.sae.sae.ui.perguntas.PerguntaFragmentNeurologico"
+        android:label="@string/menu_sinaisVitais"
+        tools:layout="@layout/fragment_pergunta"/>
+
+    <fragment
+        android:id="@+id/nav_registroPaciente"
+        android:name="com.sae.sae.ui.paciente.PacienteFragment"
+        android:label="@string/menu_registroinfo"
+        tools:layout="@layout/lista_pacientes"/>
+
+    <fragment
+        android:id="@+id/nav_exameResp"
+        android:name="com.sae.sae.ui.perguntas.PerguntaFragmentRespiratorio"
+        android:label="@string/menu_sinaisVitais"
+        tools:layout="@layout/fragment_pergunta"/>
+
+    <fragment
+        android:id="@+id/nav_exameCardio"
+        android:name="com.sae.sae.ui.perguntas.PerguntaFragmentCardiovascular"
+        android:label="@string/menu_sinaisVitais"
+        tools:layout="@layout/fragment_pergunta"/>
+
+    <fragment
+        android:id="@+id/nav_exameUrinario"
+        android:name="com.sae.sae.ui.perguntas.PerguntaFragmentUrinario"
+        android:label="@string/menu_sinaisVitais"
+        tools:layout="@layout/fragment_pergunta"/>
+
+    <fragment
+        android:id="@+id/nav_sitioCirurgico"
+        android:name="com.sae.sae.ui.perguntas.PerguntaFragmentSitioCirurgico"
+        android:label="@string/menu_sinaisVitais"
+        tools:layout="@layout/fragment_pergunta"/>
+
+
 
 </navigation>

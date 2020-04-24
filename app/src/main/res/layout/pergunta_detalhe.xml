@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="380dp"
     android:layout_margin="6dp"
     app:cardElevation="6dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
@@ -28,17 +29,38 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="250dp"
             android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btAnterior"
                 style="?attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="150dp"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/ic_voltar" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/viewOpcoes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <RadioGroup
+                        android:id="@+id/rgAllButtons"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/btSim"
@@ -56,13 +78,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:drawableLeft="@drawable/ic_nao_preto"
-                android:text="NÃO" />
+                android:text="NÃO"
+                android:textColor="#810404" />
 
             <Button
                 android:id="@+id/btProximo"
                 style="?attr/buttonBarButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="150dp"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/ic_proximo" />
 
