@@ -34,12 +34,13 @@ public class MainActivity extends AppCompatActivity {
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_viasAereas, R.id.nav_AvaliacaoResp,
                 R.id.nav_viasCirculatorias, R.id.nav_exameNeuro, R.id.nav_exameResp,
-                R.id.nav_exameCardio, R.id.nav_exameUrinario, R.id.nav_sitioCirurgico, R.id.nav_registroPaciente)
+                R.id.nav_exameCardio, R.id.nav_exameUrinario, R.id.nav_sitioCirurgico)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
     }
 
     @Override

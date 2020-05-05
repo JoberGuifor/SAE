@@ -72,8 +72,12 @@ public class PerguntaFragment extends Fragment {
         return view;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     public void setTituloSecao(Button btTitulo){
+
         btTitulo.setText("Avaliação das vias aéreas");
+        //btTitulo.setBackgroundResource(R.drawable.ic_cardiovascular);
+        btTitulo.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_cardiovascular, 0,0,0);
     }
 
     public View.OnClickListener getEventoProxPergunta(){

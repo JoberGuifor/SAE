@@ -1,309 +1,356 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/txt_infoPreparatoria"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="3dp"
-        android:text="Informações pré-operatórias"
-        android:textSize="20sp" />
-
-    <EditText
-        android:id="@+id/edit_text_sexo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Sexo" />
-
-    <EditText
-        android:id="@+id/edit_text_idade"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:hint="Idade"/>
-
-    <EditText
-        android:id="@+id/edit_text_alergias"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Alergias" />
-
-    <EditText
-        android:id="@+id/edit_text_medicamentos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Uso de medicamentos" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent" >
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/txt_comorbidades"
-                android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/txt_infoPreparatoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="Informações pré-operatórias"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/edit_text_nome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome" />
+
+        <EditText
+            android:id="@+id/edit_text_sexo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Sexo" />
+
+        <EditText
+            android:id="@+id/edit_text_idade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Idade"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/edit_text_alergias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Alergias" />
+
+        <EditText
+            android:id="@+id/edit_text_medicamentos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Uso de medicamentos" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="     Comorbidades?     " />
+                android:orientation="vertical"
+                android:padding="5dp">
 
-            <RadioGroup
-                android:id="@+id/rgComorbidades"
-                android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/txt_comorbidades"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="     Comorbidades?     " />
+
+                <RadioGroup
+                    android:id="@+id/rgComorbidades"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|center_horizontal"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rbComorbidadeSim"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sim" />
+
+                    <RadioButton
+                        android:id="@+id/rbComorbidadeNao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Não" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center|center_horizontal"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:padding="5dp">
 
-                <RadioButton
-                    android:id="@+id/rbComorbidadeSim"
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/txt_drogas"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sim" />
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="    Uso de Drogas?    " />
 
-                <RadioButton
-                    android:id="@+id/rbComorbidadeNao"
-                    android:layout_width="wrap_content"
+                <RadioGroup
+                    android:id="@+id/rgUsoDrogas"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Não" />
+                    android:gravity="center|center_horizontal"
+                    android:orientation="horizontal">
 
-            </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rbDrogasSim"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sim" />
+
+                    <RadioButton
+                        android:id="@+id/rbDrogasNao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Não" />
+
+                </RadioGroup>
+
+            </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:gravity="center"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/txt_drogas"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="    Uso de Drogas?    " />
+                android:orientation="vertical"
+                android:padding="5dp">
 
-            <RadioGroup
-                android:id="@+id/rgUsoDrogas"
-                android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/txt_Proteses"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="   Uso de próteses?   " />
+
+                <RadioGroup
+                    android:id="@+id/rgProteses"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|center_horizontal"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/rbProtesesSim"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sim" />
+
+                    <RadioButton
+                        android:id="@+id/rbProtesesNao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Não" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center|center_horizontal"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:padding="5dp">
 
-                <RadioButton
-                    android:id="@+id/rbDrogasSim"
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/txt_mobilidade"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sim" />
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="Limitação de mobilidade?" />
 
-                <RadioButton
-                    android:id="@+id/rbDrogasNao"
-                    android:layout_width="wrap_content"
+                <RadioGroup
+                    android:id="@+id/rgLimiteMobilidade"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Não" />
+                    android:gravity="center|center_horizontal"
+                    android:orientation="horizontal">
 
-            </RadioGroup>
+                    <RadioButton
+                        android:id="@+id/rbLimiteMobilidadeSim"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sim" />
+
+                    <RadioButton
+                        android:id="@+id/rbLimiteMobilidadeNao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Não" />
+
+                </RadioGroup>
+
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/txt_DefComunicacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="Deficiências de comunicação ?" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        <RadioGroup
+            android:id="@+id/rgDefComunicacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|center_horizontal"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <RadioButton
+                android:id="@+id/rbDefComunicacaoSim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sim" />
+
+            <RadioButton
+                android:id="@+id/rbDefComunicacaoNao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Não" />
+
+        </RadioGroup>
+
+
+        <TextView
+            android:id="@+id/txt_ClassifASA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="Classificação ASA:" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/viewClassificacaoASA"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/txt_Proteses"
-                android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <CheckBox
+                android:id="@+id/ck_p1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="   Uso de próteses?   " />
+                android:text="P1" />
 
-            <RadioGroup
-                android:id="@+id/rgProteses"
-                android:layout_width="match_parent"
+            <CheckBox
+                android:id="@+id/ck_p2"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center|center_horizontal"
-                android:orientation="horizontal">
+                android:text="P2" />
 
-                <RadioButton
-                    android:id="@+id/rbProtesesSim"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sim" />
+            <CheckBox
+                android:id="@+id/ck_p3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="P3" />
 
-                <RadioButton
-                    android:id="@+id/rbProtesesNao"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Não" />
+            <CheckBox
+                android:id="@+id/ck_p4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="P4" />
 
-            </RadioGroup>
+            <CheckBox
+                android:id="@+id/ck_p5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="P5" />
+
+            <CheckBox
+                android:id="@+id/ck_p6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="P6" />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_PressaoArterial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="Pressão arterial sistólica e diastólica" />
+
+        <EditText
+            android:id="@+id/edit_text_PA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="PA=_____/_____mmHg" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/txt_mobilidade"
-                android:layout_width="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_save"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="Limitação de mobilidade?" />
+                android:layout_weight="1"
+                android:text="Salvar"
+                android:textAllCaps="false" />
 
-            <RadioGroup
-                android:id="@+id/rgLimiteMobilidade"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/button_cancel"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center|center_horizontal"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/rbLimiteMobilidadeSim"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sim" />
-
-                <RadioButton
-                    android:id="@+id/rbLimiteMobilidadeNao"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Não" />
-
-            </RadioGroup>
+                android:layout_weight="1"
+                android:text="Cancelar"
+                android:textAllCaps="false" />
 
         </LinearLayout>
 
-    </LinearLayout>
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/txt_DefComunicacao"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="3dp"
-        android:text="Deficiências de comunicação ?" />
-
-    <RadioGroup
-        android:id="@+id/rgDefComunicacao"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center|center_horizontal"
-        android:orientation="horizontal">
-        <RadioButton
-            android:id="@+id/rbDefComunicacaoSim"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sim" />
-        <RadioButton
-            android:id="@+id/rbDefComunicacaoNao"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Não" />
-
-    </RadioGroup>
-
-
-    <TextView
-        android:id="@+id/txt_ClassifASA"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="3dp"
-        android:text="Classificação ASA:" />
-
-    <LinearLayout
-        android:id="@+id/viewClassificacaoASA"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="P1" />
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="P2" />
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="P3" />
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="P4" />
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="P5" />
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="P6" />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/txt_PressaoArterial"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="3dp"
-        android:text="Pressão arterial sistólica e diastólica" />
-
-    <EditText
-        android:id="@+id/edit_text_PA"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="PA=_____/_____mmHg" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/button_save"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Salvar"
-            android:textAllCaps="false"/>
-
-        <Button
-            android:id="@+id/button_cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Cancelar"
-            android:textAllCaps="false"/>
-
-    </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
+
+
+
