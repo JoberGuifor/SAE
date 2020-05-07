@@ -16,6 +16,7 @@
     <string name="menu_registroinfo">Registro de informações</string>
 
     <string name="menu_sinaisVitais">Sinais Vitais</string>
+    <string name="menu_avaliacaoInicial">Avaliação Inicial</string>
 
     <string name="menu_exameFisico">Exame físico dos sistemas</string>
     <string name="menu_exameFisicoNeuro">Neurológico</string>

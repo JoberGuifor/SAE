@@ -39,6 +39,14 @@ public class Pergunta {
         this.setTipo(Pergunta.YESNO);
     }
 
+    public Pergunta(String pergunta, View.OnClickListener eventoProx, View.OnClickListener eventoAnterior, View.OnClickListener eventoResp) {
+        this.pergunta = pergunta;
+        this.eventoProx = eventoProx;
+        this.eventoAnterior = eventoAnterior;
+        this.eventoSim = eventoResp;
+        this.setTipo(Pergunta.YESNO);
+    }
+
     public Pergunta(String pergunta, View.OnClickListener eventoProx, View.OnClickListener eventoAnterior, String tipo, List<RadioButton> opcoesRb) {
         this.pergunta = pergunta;
         this.eventoProx = eventoProx;

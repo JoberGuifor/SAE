@@ -16,7 +16,7 @@
     <fragment
         android:id="@+id/nav_viasAereas"
         android:name="com.sae.sae.ui.perguntas.PerguntaFragment"
-        android:label="@string/menu_avaliacaoABC"
+        android:label="@string/menu_viasAereas"
         tools:layout="@layout/fragment_pergunta"/>
 
     <fragment
@@ -42,6 +42,12 @@
         android:name="com.sae.sae.ui.paciente.PacienteFragment"
         android:label="@string/menu_registroinfo"
         tools:layout="@layout/lista_pacientes"/>
+
+    <fragment
+        android:id="@+id/nav_SinaisVitais"
+        android:name="com.sae.sae.ui.perguntas.PerguntaFragmentSinaisVitais"
+        android:label="@string/menu_sinaisVitais"
+        tools:layout="@layout/fragment_pergunta"/>
 
     <fragment
         android:id="@+id/nav_exameResp"

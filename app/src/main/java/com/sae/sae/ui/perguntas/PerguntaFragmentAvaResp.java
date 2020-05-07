@@ -1,10 +1,13 @@
 package com.sae.sae.ui.perguntas;
 
+import android.os.Build;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import com.sae.sae.R;
 import com.sae.sae.model.Pergunta;
 
 /**
@@ -12,9 +15,11 @@ import com.sae.sae.model.Pergunta;
  */
 public class PerguntaFragmentAvaResp extends PerguntaFragment {
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public void setTituloSecao(Button btTitulo){
         btTitulo.setText("Avaliação da circulação");
+        btTitulo.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_viasreaspiratorias, 0,0,0);
     }
 
     @Override

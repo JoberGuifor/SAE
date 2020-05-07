@@ -8,6 +8,7 @@ import android.widget.CheckBox;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import com.sae.sae.R;
 import com.sae.sae.model.Pergunta;
 
 import java.util.ArrayList;
@@ -18,9 +19,11 @@ import java.util.List;
  */
 public class PerguntaFragmentCardiovascular extends PerguntaFragment {
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public void setTituloSecao(Button btTitulo){
-        btTitulo.setText("EXAME FÍSICO DOS SISTEMAS");
+        btTitulo.setText("Exame Cardiovascular");
+        btTitulo.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_cardiovascular, 0,0,0);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)

@@ -5,7 +5,10 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,7 +35,10 @@ public class PerguntaFragment extends Fragment {
 
     protected RecyclerView recyclerView;
     protected List<Pergunta> perguntas = new ArrayList<>();
+    protected List<String> respostas = new ArrayList<>();
     protected int posicaoPergunta = 1;
+    protected NavController navController;
+    protected int proximaSessaoPerguntas;
 
     public PerguntaFragment() {
         // Required empty public constructor
@@ -49,8 +55,12 @@ public class PerguntaFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recyclerPergunta);
 
+        navController = Navigation.findNavController(this.getActivity(), R.id.nav_host_fragment);
+
         Button bt = view.findViewById(R.id.bttitulo);
         this.setTituloSecao(bt);
+
+        this.setProximaSessaoPerguntas(this.getProximaSessaoPerguntas());
 
         //Define o layout
         LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
@@ -76,8 +86,15 @@ public class PerguntaFragment extends Fragment {
     public void setTituloSecao(Button btTitulo){
 
         btTitulo.setText("Avaliação das vias aéreas");
-        //btTitulo.setBackgroundResource(R.drawable.ic_cardiovascular);
-        btTitulo.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_cardiovascular, 0,0,0);
+        btTitulo.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_viasaereas, 0,0,0);
+    }
+
+    public void setProximaSessaoPerguntas(int proximaSessaoPerguntas) {
+        this.proximaSessaoPerguntas = proximaSessaoPerguntas;
+    }
+
+    public int getProximaSessaoPerguntas() {
+        return R.id.nav_AvaliacaoResp;
     }
 
     public View.OnClickListener getEventoProxPergunta(){
@@ -92,6 +109,24 @@ public class PerguntaFragment extends Fragment {
         });
 
         return evtProx;
+    }
+
+    public View.OnClickListener getEventoResposta(){
+        View.OnClickListener evtResp = (new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(v.getClass() == AppCompatButton.class) {
+                    String resp = (String) ((AppCompatButton) v).getText();
+                    respostas.add(resp);
+                }
+
+                if(respostas.size() == perguntas.size()) {
+                    navController.navigate(getProximaSessaoPerguntas());
+                }
+            }
+        });
+
+        return evtResp;
     }
 
     public View.OnClickListener getEventoVoltaPergunta(){

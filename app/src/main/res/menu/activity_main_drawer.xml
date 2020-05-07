@@ -2,45 +2,52 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="all" >
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_padrao"
             android:title="@string/menu_home"
             />
 
-        <item android:id="@+id/nav_avaliacaoABC" android:title="@string/menu_avaliacaoABC">
+            <item android:id="@+id/nav_avaliacaoABC" android:title="@string/menu_avaliacaoABC" >
+                <menu>
+                    <group android:checkableBehavior="all">
+                        <item
+                            android:id="@+id/nav_viasAereas"
+                            android:icon="@drawable/ic_padrao"
+                            android:title="@string/menu_viasAereas" />
+                        <item
+                            android:id="@+id/nav_AvaliacaoResp"
+                            android:icon="@drawable/ic_padrao"
+                            android:title="@string/menu_viasRespiratorias" />
+
+                        <item
+                            android:id="@+id/nav_viasCirculatorias"
+                            android:icon="@drawable/ic_padrao"
+                            android:title="@string/menu_viasCirculatórias" />
+                    </group>
+                </menu>
+            </item>
+        <item android:id="@+id/nav_paciente" android:title="@string/menu_avaliacaoInicial">
             <menu>
-                <item
-                    android:id="@+id/nav_viasAereas"
-                    android:icon="@drawable/ic_padrao"
-                    android:title="@string/menu_viasAereas" />
+                <group android:checkableBehavior="all">
+                    <item
+                        android:id="@+id/nav_registroPaciente"
+                        android:icon="@drawable/ic_padrao"
+                        android:title="@string/menu_registroinfo"
+                        android:visible="false"/>
 
-                <item
-                    android:id="@+id/nav_AvaliacaoResp"
-                    android:icon="@drawable/ic_padrao"
-                    android:title="@string/menu_viasRespiratorias" />
-
-                <item
-                    android:id="@+id/nav_viasCirculatorias"
-                    android:icon="@drawable/ic_padrao"
-                    android:title="@string/menu_viasCirculatórias" />
+                    <item
+                        android:id="@+id/nav_SinaisVitais"
+                        android:icon="@drawable/ic_padrao"
+                        android:title="@string/menu_sinaisVitais"/>
+                </group>
             </menu>
         </item>
 
-        <item android:id="@+id/nav_paciente" android:title="Paciente">
+        <item android:id="@+id/nav_avaliacaoInicial" android:title="@string/menu_exameFisico">
             <menu>
-                <item
-                    android:id="@+id/nav_registroPaciente"
-                    android:icon="@drawable/ic_padrao"
-                    android:title="@string/menu_registroinfo" />
-            </menu>
-        </item>
-
-        <item android:id="@+id/nav_avaliacaoInicial" android:title="@string/menu_sinaisVitais">
-            <menu>
-
-                <item android:id="@+id/nav_exameFisico" android:title="@string/menu_exameFisico">
+                <group android:checkableBehavior="all">
                     <item
                         android:id="@+id/nav_exameNeuro"
                         android:icon="@drawable/ic_padrao"
@@ -66,7 +73,7 @@
                         android:icon="@drawable/ic_padrao"
                         android:title="@string/menu_exameFisicoSitoCirurgico" />
 
-                </item>
+                </group>
             </menu>
         </item>
 

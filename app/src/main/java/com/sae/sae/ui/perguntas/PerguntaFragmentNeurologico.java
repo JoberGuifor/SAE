@@ -7,6 +7,7 @@ import android.widget.Button;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
+import com.sae.sae.R;
 import com.sae.sae.model.Pergunta;
 
 import java.util.ArrayList;
@@ -17,9 +18,11 @@ import java.util.List;
  */
 public class PerguntaFragmentNeurologico extends PerguntaFragment {
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public void setTituloSecao(Button btTitulo){
-        btTitulo.setText("EXAME FÍSICO DOS SISTEMAS");
+        btTitulo.setText("Exame Neurológico");
+        btTitulo.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_neurologico, 0,0,0);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
