@@ -17,23 +17,23 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PerguntaFragmentUrinario extends PerguntaFragment {
+public class PerguntaTransoperatorias extends PerguntaFragment {
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public void setTituloSecao(Button btTitulo){
-        btTitulo.setText("Exame Urinário");
-        btTitulo.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_urinario, 0,0,0);
+        btTitulo.setText("Informações transoperatórias");
+        btTitulo.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_registroinfo, 0,0,0);
     }
 
     @Override
     public int getProximaSessaoPerguntas() {
-        return R.id.nav_sitioCirurgico;
+        return R.id.nav_SinaisVitais;
     }
 
     @Override
     public int getGradiente() {
-        return R.drawable.gradiente_examesfisicos;
+        return R.drawable.gradiente_paciente;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -43,29 +43,37 @@ public class PerguntaFragmentUrinario extends PerguntaFragment {
         List<String>opcoes = new ArrayList<>();
         opcoes.add("Digite aqui...");
 
-        Pergunta p = new Pergunta("Qual o volume de infusões endovenosas?", evtProx, evtAnt, Pergunta.INPUT,
+        Pergunta p = new Pergunta("Estado emocional:", evtProx, evtAnt);;
+        this.perguntas.add(p);
+
+        p = new Pergunta("Tipo de anestesia:", evtProx, evtAnt, Pergunta.INPUT,
                 this.getOpcoesinput(view, opcoes),i);
         this.perguntas.add(p);
 
-        p = new Pergunta("Qual o volume das soluções de irrigação?", evtProx, evtAnt, Pergunta.INPUT,
+        p = new Pergunta("Medicamentos utilizados, incluindo da reversão anestésica:", evtProx, evtAnt, Pergunta.INPUT,
                 this.getOpcoesinput(view, opcoes),i);
         this.perguntas.add(p);
 
-        p = new Pergunta("Qual o volume da drenagem pelo sítio cirúrgico?", evtProx, evtAnt, Pergunta.INPUT,
+        p = new Pergunta("Tipo de cirurgia:", evtProx, evtAnt, Pergunta.INPUT,
                 this.getOpcoesinput(view, opcoes),i);
         this.perguntas.add(p);
 
-        p = new Pergunta("Qual o volume e aspecto da Diurese?", evtProx, evtAnt, Pergunta.INPUT,
+        p = new Pergunta("Perdas hídricas/ sanguíneas e reposições-balanço hídrico:", evtProx, evtAnt, Pergunta.INPUT,
                 this.getOpcoesinput(view, opcoes),i);
         this.perguntas.add(p);
 
-        p = new Pergunta("O paciente relata ou apresenta sinais e sintomas de retenção urinária?", evtProx, evtAnt);;
-        this.perguntas.add(p);
-
-        p = new Pergunta("Qual é o valor do balanço hídrico mensurado por meio da entrada e saída de líquidos?", evtProx, evtAnt, Pergunta.INPUT,
+        p = new Pergunta("Complicações ocorridas:", evtProx, evtAnt, Pergunta.INPUT,
                 this.getOpcoesinput(view, opcoes),i);
         this.perguntas.add(p);
 
+        p = new Pergunta("Presença de dispositivos invasivos:\n Cateteres", evtProx, evtAnt);
+        this.perguntas.add(p);
+
+        p = new Pergunta("Presença de dispositivos invasivos:\n Perviedade", evtProx, evtAnt);
+        this.perguntas.add(p);
+
+        p = new Pergunta("Presença de dispositivos invasivos:\n Segurança", evtProx, evtAnt);
+        this.perguntas.add(p);
 
     }
 

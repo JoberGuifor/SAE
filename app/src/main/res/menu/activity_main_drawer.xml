@@ -28,6 +28,18 @@
                     </group>
                 </menu>
             </item>
+
+        <item android:id="@+id/nav_regTransOp" android:title="@string/menu_registroinfo">
+            <menu>
+                <group android:checkableBehavior="all">
+                    <item
+                        android:id="@+id/nav_registoInfoTransOperatorias"
+                        android:icon="@drawable/ic_padrao"
+                        android:title="@string/menu_registroinfo"/>
+                </group>
+            </menu>
+        </item>
+
         <item android:id="@+id/nav_paciente" android:title="@string/menu_avaliacaoInicial">
             <menu>
                 <group android:checkableBehavior="all">
@@ -77,6 +89,16 @@
             </menu>
         </item>
 
+        <item android:id="@+id/nav_descrindiceAK" android:title="@string/menu_indiceAK">
+            <menu>
+                <group android:checkableBehavior="all">
+                    <item
+                        android:id="@+id/nav_indiceAK"
+                        android:icon="@drawable/ic_padrao"
+                        android:title="@string/menu_indiceAK" />
+                </group>
+            </menu>
+        </item>
 
     </group>
 

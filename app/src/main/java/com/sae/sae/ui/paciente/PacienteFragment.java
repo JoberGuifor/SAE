@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -43,6 +44,8 @@ public class PacienteFragment extends Fragment {
     private boolean onEditing = false;
     NavController navController;
 
+    private boolean testes = true;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel = ViewModelProviders.of(this).get(PacienteViewModel.class);
@@ -61,6 +64,10 @@ public class PacienteFragment extends Fragment {
             }
         });
 
+        ActionBar ac = ((MainActivity)getActivity()).getActionBarPrincipal();
+        if(ac!=null){
+            ac.hide();
+        }
         //final TextView textView = root.findViewById(R.id.text_home);
         //homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
         //    @Override
@@ -241,31 +248,85 @@ public class PacienteFragment extends Fragment {
 
                 List<String> classificacaoASA = new ArrayList<>();
 
-                if(ck_ClassASAP1.isChecked()){
+                if (ck_ClassASAP1.isChecked()) {
                     classificacaoASA.add(ck_ClassASAP1.getText().toString());
+                } else if(testes){
+                    classificacaoASA.add("P1");
                 }
-                if(ck_ClassASAP2.isChecked()){
+                if (ck_ClassASAP2.isChecked()) {
                     classificacaoASA.add(ck_ClassASAP2.getText().toString());
                 }
-                if(ck_ClassASAP3.isChecked()){
+                if (ck_ClassASAP3.isChecked()) {
                     classificacaoASA.add(ck_ClassASAP3.getText().toString());
                 }
-                if(ck_ClassASAP4.isChecked()){
+                if (ck_ClassASAP4.isChecked()) {
                     classificacaoASA.add(ck_ClassASAP4.getText().toString());
                 }
-                if(ck_ClassASAP5.isChecked()){
+                if (ck_ClassASAP5.isChecked()) {
                     classificacaoASA.add(ck_ClassASAP5.getText().toString());
                 }
-                if(ck_ClassASAP6.isChecked()){
+                if (ck_ClassASAP6.isChecked()) {
                     classificacaoASA.add(ck_ClassASAP6.getText().toString());
                 }
 
                 final Paciente p = new Paciente();
-                p.setNome(txt_nome.getText().toString());
-                p.setSexo(txt_sexo.getText().toString());
-                p.setIdade(Integer.parseInt(txt_idade.getText().toString()));
-                p.setAlergias(txt_alergias.getText().toString());
-                p.setMedicamentos(txt_medicamentos.getText().toString());
+
+                if (txt_nome.getText().length() > 0) {
+                    p.setNome(txt_nome.getText().toString());
+                } else {
+                    if (testes) {
+                        p.setNome("Paciente 0" + pacientesList.size());
+                    } else {
+                        txt_nome.requestFocus();
+                        Snackbar.make(v, "Informe o nome do paciente!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                        return;
+                    }
+                }
+
+                if (txt_sexo.getText().length() > 0) {
+                    p.setSexo(txt_sexo.getText().toString());
+                } else {
+                    if (testes) {
+                        p.setSexo("M");
+                    } else {
+                        txt_sexo.requestFocus();
+                        Snackbar.make(v, "Informe o sexo do paciente!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                        return;
+                    }
+                }
+                if (txt_idade.getText().length() > 0) {
+                    p.setIdade(Integer.parseInt(txt_idade.getText().toString()));
+                } else {
+                    if (testes) {
+                        p.setIdade(55);
+                    } else {
+                        txt_idade.requestFocus();
+                        Snackbar.make(v, "Informe a idade do paciente!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                        return;
+                    }
+                }
+                if (txt_alergias.getText().length() > 0) {
+                    p.setAlergias(txt_alergias.getText().toString());
+                } else {
+                    if (testes) {
+                        p.setAlergias("N/A");
+                    } else {
+                        txt_alergias.requestFocus();
+                        Snackbar.make(v, "Informe as alergias do paciente!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                        return;
+                    }
+                }
+                if (txt_medicamentos.getText().length() > 0) {
+                    p.setMedicamentos(txt_medicamentos.getText().toString());
+                } else {
+                    if (testes) {
+                        p.setMedicamentos("N/A");
+                    } else {
+                        txt_medicamentos.requestFocus();
+                        Snackbar.make(v, "Informe os medicamentos do paciente!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                        return;
+                    }
+                }
                 p.setComorbidades(rb_comorbidades.isChecked());
                 p.setUsaProteses(rb_Proteses.isChecked());
                 p.setUsaDrogras(rb_usoDrogas.isChecked());
@@ -273,9 +334,17 @@ public class PacienteFragment extends Fragment {
                 p.setLimitacaoMobilidade(rb_mobilidade.isChecked());
 
                 p.setClassASA(classificacaoASA);
-
-                p.setPressaoArterial(txt_PressaoArterial.getText().toString());
-
+                if(txt_PressaoArterial.getText().length() > 0 ){
+                    p.setPressaoArterial(txt_PressaoArterial.getText().toString());
+                }else{
+                    if(testes){
+                        p.setPressaoArterial("10/8");
+                    }else{
+                        txt_PressaoArterial.requestFocus();
+                        Snackbar.make(v, "Informe a pressão arterial do paciente!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                        return;
+                    }
+                }
                 // Create a new string list to store listview item string.
                 List<String> nomesPacientes = new ArrayList<>();
 

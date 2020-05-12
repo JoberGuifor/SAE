@@ -26,6 +26,16 @@ public class PerguntaFragmentSitioCirurgico extends PerguntaFragment {
         btTitulo.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_sitiocirurgico, 0,0,0);
     }
 
+    @Override
+    public int getProximaSessaoPerguntas() {
+        return R.id.nav_descrindiceAK;
+    }
+
+    @Override
+    public int getGradiente() {
+        return R.drawable.gradiente_examesfisicos;
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public void preparaPerguntas(View.OnClickListener evtAnt, View.OnClickListener evtProx, View view){

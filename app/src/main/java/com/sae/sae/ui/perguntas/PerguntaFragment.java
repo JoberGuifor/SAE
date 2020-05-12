@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
@@ -20,8 +21,10 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.sae.sae.R;
+import com.sae.sae.activity.MainActivity;
 import com.sae.sae.adapter.PerguntaAdapter;
 import com.sae.sae.model.Pergunta;
 
@@ -52,7 +55,13 @@ public class PerguntaFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_pergunta, container, false);
-
+        ActionBar ac = ((MainActivity)getActivity()).getActionBarPrincipal();
+        if(ac!=null){
+            ac.show();
+            ac.setBackgroundDrawable(getResources().getDrawable(getGradiente()));
+            Button btheader = view.findViewById(R.id.btheader);
+            btheader.setBackgroundDrawable(getResources().getDrawable(getGradiente()));
+        }
         recyclerView = view.findViewById(R.id.recyclerPergunta);
 
         navController = Navigation.findNavController(this.getActivity(), R.id.nav_host_fragment);
@@ -97,32 +106,146 @@ public class PerguntaFragment extends Fragment {
         return R.id.nav_AvaliacaoResp;
     }
 
+    public int getGradiente() {
+        return R.drawable.gradiente_avalicaoabc;
+    }
+
     public View.OnClickListener getEventoProxPergunta(){
         View.OnClickListener evtProx = (new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                registraResposta(v);
                 if(posicaoPergunta < perguntas.size()) {
                     posicaoPergunta++;
-                    recyclerView.scrollToPosition(posicaoPergunta-1);
+                    recyclerView.scrollToPosition(getPosicaoObjPergunta());
                 }
+
             }
         });
 
         return evtProx;
     }
 
+    private int getPosicaoObjPergunta(){
+        return posicaoPergunta-1;
+    }
+
+    private void registraResposta(String resp){
+        if (!perguntas.get(getPosicaoObjPergunta()).isRepondida()){
+            if(resp.length()>0){
+                perguntas.get(getPosicaoObjPergunta()).setRepondida(true);
+                respostas.add(resp);
+            }
+        }
+    }
+
+    @SuppressLint("ResourceType")
+    public void registraResposta(View v){
+        if(v.getClass() == AppCompatButton.class) {
+            String resp = (String) ((AppCompatButton) v).getText();
+
+            if(perguntas.size() >= posicaoPergunta && perguntas.get(getPosicaoObjPergunta()) != null ){
+
+                if(perguntas.get(getPosicaoObjPergunta()).getTipo().equals(Pergunta.YESNO)) {
+                    if(resp.equals("SIM") || resp.equals("NÃO")) {
+                        registraResposta(resp);
+                    }
+                }else if(perguntas.get(getPosicaoObjPergunta()).getTipo().equals(Pergunta.RADIO)){
+                    LinearLayout opcoes = ((View)v.getParent()).findViewById(R.id.viewOpcoes);
+
+                    if(opcoes != null){
+                        int opcaoSelecionada = ((RadioGroup) opcoes.getChildAt(0)).getCheckedRadioButtonId();
+                        if( opcaoSelecionada >= 0){
+                            RadioButton rb = (RadioButton) opcoes.findViewById (opcaoSelecionada);
+                            registraResposta((String) rb.getText());
+                        }
+                    }
+                }else if(perguntas.get(getPosicaoObjPergunta()).getTipo().equals(Pergunta.CHECK)) {
+                    LinearLayout opcoes = ((View) v.getParent()).findViewById(R.id.viewOpcoes);
+                    String respostaCK = "";
+                    int pos = opcoes.getChildCount();
+                    for (int i = 0; i < pos ; i++) {
+                        if (opcoes.getChildAt(i).getClass() == CheckBox.class) {
+                            CheckBox ck = (CheckBox) opcoes.getChildAt(i);
+                            if (ck.isChecked()) {
+                                respostaCK += ck.getText() + ";";
+                            }
+                        }
+                    }
+                    if (respostaCK.length() > 0) {
+                        registraResposta(respostaCK);
+                    }
+                }else if(perguntas.get(getPosicaoObjPergunta()).getTipo().equals(Pergunta.INPUT)){
+                    LinearLayout opcoes = ((View)v.getParent()).findViewById(R.id.viewOpcoes);
+                    String respostaIn = "";
+                    int pos = opcoes.getChildCount();
+                    for (int i = 0; i < pos ; i++) {
+                        if(opcoes.getChildAt(i).getClass() == EditText.class){
+                            EditText edt = (EditText) opcoes.getChildAt(i);
+                            if(edt.getText().length() > 0){
+                                respostaIn += edt.getText() + ";";
+                            }
+                        }
+                    }
+                    if(respostaIn.length() > 0){
+                        registraResposta(respostaIn);
+                    }
+                }else if(perguntas.get(getPosicaoObjPergunta()).getTipo().equals(Pergunta.CKINPUT)){
+                    LinearLayout opcoes = ((View)v.getParent()).findViewById(R.id.viewOpcoes);
+                    String respostaCkIn = "";
+                    int pos = opcoes.getChildCount();
+                    for (int i = 0; i < pos ; i++) {
+                        if(opcoes.getChildAt(i).getClass() == EditText.class){
+                            EditText edt = (EditText) opcoes.getChildAt(i);
+                            if(edt.getText().length() > 0){
+                                respostaCkIn += edt.getText() + ";";
+                            }
+                        }else if(opcoes.getChildAt(i).getClass() == CheckBox.class){
+                            CheckBox ck = (CheckBox) opcoes.getChildAt(i);
+                            if(ck.isChecked()){
+                                respostaCkIn += ck.getText() + ";";
+                            }
+                        }
+                    }
+                    if(respostaCkIn.length() > 0){
+                        registraResposta(respostaCkIn);
+                    }
+                }else if(perguntas.get(getPosicaoObjPergunta()).getTipo().equals(Pergunta.RGINPUT)){
+                    LinearLayout opcoes = ((View)v.getParent()).findViewById(R.id.viewOpcoes);
+                    String respostaCkRg = "";
+                    int pos = opcoes.getChildCount();
+                    for (int i = 0; i < pos ; i++) {
+                        if(opcoes.getChildAt(i).getClass() == EditText.class){
+                            EditText edt = (EditText) opcoes.getChildAt(i);
+                            if(edt.getText().length() > 0){
+                                respostaCkRg += edt.getText() + ";";
+                            }
+                        }else if(opcoes.getChildAt(i).getClass() == RadioGroup.class){
+                            int opcaoSelecionada = ((RadioGroup) opcoes.getChildAt(0)).getCheckedRadioButtonId();
+                            if( opcaoSelecionada >= 0){
+                                RadioButton rb = (RadioButton) opcoes.findViewById (opcaoSelecionada);
+                                respostaCkRg += rb.getText();
+                            }
+                        }
+                    }
+
+                    if(respostaCkRg.length() > 0){
+                        registraResposta(respostaCkRg);
+                    }
+                } // RGinput
+            }
+        }
+
+        if(respostas.size() == perguntas.size() && getProximaSessaoPerguntas() > 0 ) {
+            navController.navigate(getProximaSessaoPerguntas());
+        }
+    }
+
     public View.OnClickListener getEventoResposta(){
         View.OnClickListener evtResp = (new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(v.getClass() == AppCompatButton.class) {
-                    String resp = (String) ((AppCompatButton) v).getText();
-                    respostas.add(resp);
-                }
 
-                if(respostas.size() == perguntas.size()) {
-                    navController.navigate(getProximaSessaoPerguntas());
-                }
             }
         });
 
@@ -135,7 +258,7 @@ public class PerguntaFragment extends Fragment {
             public void onClick(View v) {
                 if(posicaoPergunta > 1) {
                     posicaoPergunta--;
-                    recyclerView.scrollToPosition(posicaoPergunta-1);
+                    recyclerView.scrollToPosition(getPosicaoObjPergunta());
                 }
             }
         });
@@ -143,6 +266,7 @@ public class PerguntaFragment extends Fragment {
         return evtAnt;
     }
 
+    @SuppressLint("ResourceAsColor")
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     public List<RadioButton> getOpcoesRG(View view, List<String> opcoes){
         List<RadioButton> rbOpcoes = new ArrayList<>();
@@ -151,12 +275,14 @@ public class PerguntaFragment extends Fragment {
             RadioButton rdbtn = new RadioButton(view.getContext());
             rdbtn.setId(View.generateViewId());
             rdbtn.setText(opcoes.get(i));
+            rdbtn.setTextColor(R.color.cor_textos);
             rbOpcoes.add(rdbtn);
         }
 
         return rbOpcoes;
     }
 
+    @SuppressLint("ResourceAsColor")
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     public List<CheckBox> getOpcoesCheck(View view, List<String> opcoes){
         List<CheckBox> ckOpcoes = new ArrayList<>();
@@ -165,12 +291,14 @@ public class PerguntaFragment extends Fragment {
             CheckBox ckbtn = new CheckBox(view.getContext());
             ckbtn.setId(View.generateViewId());
             ckbtn.setText(opcoes.get(i));
+            ckbtn.setTextColor(R.color.cor_textos);
             ckOpcoes.add(ckbtn);
         }
 
         return ckOpcoes;
     }
 
+    @SuppressLint("ResourceAsColor")
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     public List<EditText> getOpcoesinput(View view, List<String> opcoes){
         List<EditText> txOpcoes = new ArrayList<>();
@@ -179,6 +307,7 @@ public class PerguntaFragment extends Fragment {
             EditText txt = new EditText(view.getContext());
             txt.setId(View.generateViewId());
             txt.setHint(opcoes.get(i));
+            txt.setTextColor(R.color.cor_textos);
             txOpcoes.add(txt);
         }
 

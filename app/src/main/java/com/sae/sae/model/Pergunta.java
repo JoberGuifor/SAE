@@ -23,8 +23,17 @@ public class Pergunta {
     private List<RadioButton> opcoesRb;
     private List<CheckBox> opcoesCK;
     private List<EditText> opcoesInput;
+    private boolean repondida;
 
     public Pergunta() {
+    }
+
+    public boolean isRepondida() {
+        return repondida;
+    }
+
+    public void setRepondida(boolean repondida) {
+        this.repondida = repondida;
     }
 
     public Pergunta(String pergunta) {

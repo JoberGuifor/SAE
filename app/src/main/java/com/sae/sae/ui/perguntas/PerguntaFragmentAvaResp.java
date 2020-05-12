@@ -23,6 +23,11 @@ public class PerguntaFragmentAvaResp extends PerguntaFragment {
     }
 
     @Override
+    public int getProximaSessaoPerguntas() {
+        return R.id.nav_viasCirculatorias;
+    }
+
+    @Override
     public void preparaPerguntas(View.OnClickListener evtAnt, View.OnClickListener evtProx, View view){
 
         Pergunta p = new Pergunta("A frequência e o ritmo respiratório foram avaliados?", evtProx, evtAnt);

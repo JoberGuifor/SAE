@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimary">#1889AA</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <color name="color1paciente">#E44298</color>
+    <color name="color2paciente">#B669AD</color>
+
+    <color name="color1AvaABC">#08B5B4</color>
+    <color name="color2AvaABC">#1889AA</color>
+
+    <color name="color1SinaisVitais">#34A8D7</color>
+    <color name="color2SinaisVitais">#3377B6</color>
+
+    <color name="color1ExameFisico">#6F83E7</color>
+    <color name="color2ExameFisico">#AB74E6</color>
+
+    <color name="cor_textos">#444444</color>
 </resources>

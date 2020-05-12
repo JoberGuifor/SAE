@@ -27,6 +27,16 @@ public class PerguntaFragmentSinaisVitais extends PerguntaFragment {
         btTitulo.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_registroinfo, 0,0,0);
     }
 
+    @Override
+    public int getProximaSessaoPerguntas() {
+        return R.id.nav_exameNeuro;
+    }
+
+    @Override
+    public int getGradiente() {
+        return R.drawable.gradiente_sinaisvitais;
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public void preparaPerguntas(View.OnClickListener evtAnt, View.OnClickListener evtProx, View view){

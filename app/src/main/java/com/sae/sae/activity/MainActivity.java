@@ -1,11 +1,7 @@
 package com.sae.sae.activity;
 
 import android.os.Bundle;
-import android.view.View;
-import android.view.Menu;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import com.sae.sae.R;
 
@@ -30,6 +26,10 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar!=null){
+            actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.gradiente_paciente));
+        }
         //getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         //getSupportActionBar().setCustomView(R.layout.txt_layout);
 
@@ -40,13 +40,18 @@ public class MainActivity extends AppCompatActivity {
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_viasAereas, R.id.nav_AvaliacaoResp,
                 R.id.nav_viasCirculatorias, R.id.nav_exameNeuro, R.id.nav_exameResp,
-                R.id.nav_exameCardio, R.id.nav_exameUrinario, R.id.nav_sitioCirurgico, R.id.nav_SinaisVitais)
+                R.id.nav_exameCardio, R.id.nav_exameUrinario, R.id.nav_sitioCirurgico, R.id.nav_SinaisVitais,
+                R.id.nav_indiceAK, R.id.nav_registoInfoTransOperatorias)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+    }
+
+    public ActionBar getActionBarPrincipal(){
+        return getSupportActionBar();
     }
 
     @Override

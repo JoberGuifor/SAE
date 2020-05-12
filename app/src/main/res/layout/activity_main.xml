@@ -18,11 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#22262B"
         android:fitsSystemWindows="true"
-        android:keepScreenOn="false"
-        app:itemIconTint="#AAAAAA"
-        app:itemTextColor="#AAAAAA"
-        app:menu="@menu/activity_main_drawer" />
+        app:menu="@menu/activity_main_drawer"  />
 
 </androidx.drawerlayout.widget.DrawerLayout>

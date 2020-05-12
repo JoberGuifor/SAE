@@ -12,12 +12,13 @@
         android:layout_height="wrap_content"
         android:foregroundGravity="center"
         android:gravity="center|center_horizontal"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="0dp">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="112dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:background="?attr/colorPrimary"
             android:foregroundGravity="center"

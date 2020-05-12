@@ -23,6 +23,11 @@ public class PerguntaFragmentAvaCirculacao extends PerguntaFragment {
     }
 
     @Override
+    public int getProximaSessaoPerguntas() {
+        return R.id.nav_registoInfoTransOperatorias;
+    }
+
+    @Override
     public void preparaPerguntas(View.OnClickListener evtAnt, View.OnClickListener evtProx, View view){
         
         Pergunta p = new Pergunta("O monitor cardíaco foi instalado e está em adequado funcionamento?", evtProx, evtAnt);

@@ -12,12 +12,15 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sae.sae.R;
 import com.sae.sae.model.Pergunta;
 
 import java.util.List;
+
+import static com.sae.sae.R.id.divider;
 
 public class PerguntaAdapter extends RecyclerView.Adapter<PerguntaAdapter.MyViewHolder> {
 
@@ -47,6 +50,9 @@ public class PerguntaAdapter extends RecyclerView.Adapter<PerguntaAdapter.MyView
             holder.btSim.setOnClickListener(pergunta.getEventoSim());
 
         if(pergunta.getTipo().equals(Pergunta.YESNO)){
+            holder.btNao.setVisibility(View.VISIBLE);
+            holder.btSim.setVisibility(View.VISIBLE);
+
             holder.rgAllButtons.setVisibility(View.GONE);
             holder.viewOpcoes.setVisibility(View.GONE);
         }else if(pergunta.getTipo().equals(Pergunta.RADIO)){
@@ -103,6 +109,8 @@ public class PerguntaAdapter extends RecyclerView.Adapter<PerguntaAdapter.MyView
             holder.btSim.setVisibility(View.GONE);
         }
 
+        holder.divider.setVisibility(holder.btSim.getVisibility());
+
     }
 
     @Override
@@ -119,6 +127,7 @@ public class PerguntaAdapter extends RecyclerView.Adapter<PerguntaAdapter.MyView
         private Button btAnt;
         private RadioGroup rgAllButtons;
         private LinearLayout viewOpcoes;
+        private View divider;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -130,6 +139,7 @@ public class PerguntaAdapter extends RecyclerView.Adapter<PerguntaAdapter.MyView
             btAnt = itemView.findViewById(R.id.btAnterior);
             rgAllButtons = itemView.findViewById(R.id.rgAllButtons);
             viewOpcoes = itemView.findViewById(R.id.viewOpcoes);
+            divider = itemView.findViewById(R.id.divider);
         }
 
     }

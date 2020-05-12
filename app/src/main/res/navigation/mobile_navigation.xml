@@ -73,6 +73,16 @@
         android:label="@string/menu_sinaisVitais"
         tools:layout="@layout/fragment_pergunta"/>
 
+    <fragment
+        android:id="@+id/nav_indiceAK"
+        android:name="com.sae.sae.ui.perguntas.PerguntaIndiceAK"
+        android:label="@string/menu_indiceAK"
+        tools:layout="@layout/fragment_pergunta"/>
 
+    <fragment
+        android:id="@+id/nav_registoInfoTransOperatorias"
+        android:name="com.sae.sae.ui.perguntas.PerguntaTransoperatorias"
+        android:label="@string/menu_registroinfo"
+        tools:layout="@layout/fragment_pergunta"/>
 
 </navigation>

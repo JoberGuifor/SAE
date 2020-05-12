@@ -20,6 +20,17 @@
         app:layout_constraintTop_toBottomOf="@+id/bttitulo" />
 
     <Button
+        android:id="@+id/btheader"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="0dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="-1dp"
+        android:enabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/bttitulo"
         android:layout_width="246dp"
         android:layout_height="46dp"
@@ -28,6 +39,7 @@
         android:drawableStart="@drawable/ic_titulo_resp"
         android:padding="15dp"
         android:text="Button"
+        android:textColor="@color/cor_textos"
         android:textSize="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

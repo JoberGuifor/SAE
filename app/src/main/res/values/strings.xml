@@ -25,6 +25,10 @@
     <string name="menu_exameFisicoUrinario">Urinário</string>
     <string name="menu_exameFisicoSitoCirurgico">Sítio Cirúrgico</string>
 
+    <string name="menu_indiceAK">Índice de Aldrete e Kroulik</string>
+
+    <string name="menu_infoTransoperatorias">Informações transoperatórias</string>
+
     <string name="home_second">Home Second</string>
 
     <!-- TODO: Remove or change this placeholder text -->
