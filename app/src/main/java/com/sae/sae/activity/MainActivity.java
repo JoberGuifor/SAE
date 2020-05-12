@@ -6,6 +6,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.sae.sae.R;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -18,12 +19,15 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
 
+    private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
+        
         setSupportActionBar(toolbar);
 
         ActionBar actionBar = getSupportActionBar();
@@ -51,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public ActionBar getActionBarPrincipal(){
+
+        toolbar.setContentInsetStartWithNavigation((int) ((((CoordinatorLayout)toolbar.getParent().getParent()).getWidth() / 2) - ((toolbar.getTitle().length() * 15))));
+
         return getSupportActionBar();
     }
 

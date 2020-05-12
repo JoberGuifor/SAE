@@ -64,6 +64,8 @@ public class PerguntaFragment extends Fragment {
         }
         recyclerView = view.findViewById(R.id.recyclerPergunta);
 
+        recyclerView.setNestedScrollingEnabled(false);
+
         navController = Navigation.findNavController(this.getActivity(), R.id.nav_host_fragment);
 
         Button bt = view.findViewById(R.id.bttitulo);
