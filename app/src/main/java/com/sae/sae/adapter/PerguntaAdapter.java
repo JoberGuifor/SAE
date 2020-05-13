@@ -74,12 +74,12 @@ public class PerguntaAdapter extends RecyclerView.Adapter<PerguntaAdapter.MyView
         }else if(pergunta.getTipo().equals(Pergunta.RGINPUT)){
             holder.viewOpcoes.setVisibility(View.VISIBLE);
             holder.rgAllButtons.setVisibility(View.VISIBLE);
-            for (int i = 0; i < pergunta.getOpcoesInput().size() ; i++) {
-                holder.viewOpcoes.addView(pergunta.getOpcoesInput().get(i));
-            }
 
             for (int i = 0; i < pergunta.getOpcoesRb().size() ; i++) {
                 holder.rgAllButtons.addView(pergunta.getOpcoesRb().get(i));
+            }
+            for (int i = 0; i < pergunta.getOpcoesInput().size() ; i++) {
+                holder.viewOpcoes.addView(pergunta.getOpcoesInput().get(i));
             }
             holder.btNao.setVisibility(View.GONE);
             holder.btSim.setVisibility(View.GONE);
@@ -87,13 +87,14 @@ public class PerguntaAdapter extends RecyclerView.Adapter<PerguntaAdapter.MyView
             holder.viewOpcoes.setVisibility(View.VISIBLE);
             holder.rgAllButtons.setVisibility(View.GONE);
 
+            for (int i = 0; i < pergunta.getOpcoesCK().size() ; i++) {
+                holder.viewOpcoes.addView(pergunta.getOpcoesCK().get(i));
+            }
+
             for (int i = 0; i < pergunta.getOpcoesInput().size() ; i++) {
                 holder.viewOpcoes.addView(pergunta.getOpcoesInput().get(i));
             }
 
-            for (int i = 0; i < pergunta.getOpcoesCK().size() ; i++) {
-                holder.viewOpcoes.addView(pergunta.getOpcoesCK().get(i));
-            }
             holder.btNao.setVisibility(View.GONE);
             holder.btSim.setVisibility(View.GONE);
         }else if(pergunta.getTipo().equals(Pergunta.INPUT)){

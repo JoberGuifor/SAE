@@ -40,11 +40,11 @@
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:drawableLeft="@drawable/ic_voltar_novo" />
+                android:drawableRight="@drawable/ic_voltar_novo" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -59,6 +59,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:orientation="vertical"
+                    android:gravity="center_vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -84,13 +85,13 @@
                 android:drawableLeft="@drawable/ic_sim_preto"
                 android:paddingLeft="10dp"
                 android:text="SIM"
-                android:textColor="@color/cor_textos" />
+                android:textColor="@color/cor_textos"/>
 
             <View
                 android:id="@+id/divider"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="1"/>
 
             <Button
                 android:id="@+id/btNao"
@@ -102,7 +103,7 @@
                 android:drawableLeft="@drawable/ic_nao_preto"
                 android:paddingLeft="10dp"
                 android:text="NÃO"
-                android:textColor="@color/cor_textos" />
+                android:textColor="@color/cor_textos"/>
 
             <Button
                 android:id="@+id/btProximo"

@@ -34,7 +34,7 @@
     <fragment
         android:id="@+id/nav_exameNeuro"
         android:name="com.sae.sae.ui.perguntas.PerguntaFragmentNeurologico"
-        android:label="@string/menu_sinaisVitais"
+        android:label="@string/menu_exameFisico"
         tools:layout="@layout/fragment_pergunta"/>
 
     <fragment
@@ -46,31 +46,31 @@
     <fragment
         android:id="@+id/nav_SinaisVitais"
         android:name="com.sae.sae.ui.perguntas.PerguntaFragmentSinaisVitais"
-        android:label="@string/menu_sinaisVitais"
+        android:label="@string/menu_avaliacaoInicial"
         tools:layout="@layout/fragment_pergunta"/>
 
     <fragment
         android:id="@+id/nav_exameResp"
         android:name="com.sae.sae.ui.perguntas.PerguntaFragmentRespiratorio"
-        android:label="@string/menu_sinaisVitais"
+        android:label="@string/menu_exameFisico"
         tools:layout="@layout/fragment_pergunta"/>
 
     <fragment
         android:id="@+id/nav_exameCardio"
         android:name="com.sae.sae.ui.perguntas.PerguntaFragmentCardiovascular"
-        android:label="@string/menu_sinaisVitais"
+        android:label="@string/menu_exameFisico"
         tools:layout="@layout/fragment_pergunta"/>
 
     <fragment
         android:id="@+id/nav_exameUrinario"
         android:name="com.sae.sae.ui.perguntas.PerguntaFragmentUrinario"
-        android:label="@string/menu_sinaisVitais"
+        android:label="@string/menu_exameFisico"
         tools:layout="@layout/fragment_pergunta"/>
 
     <fragment
         android:id="@+id/nav_sitioCirurgico"
         android:name="com.sae.sae.ui.perguntas.PerguntaFragmentSitioCirurgico"
-        android:label="@string/menu_sinaisVitais"
+        android:label="@string/menu_exameFisico"
         tools:layout="@layout/fragment_pergunta"/>
 
     <fragment

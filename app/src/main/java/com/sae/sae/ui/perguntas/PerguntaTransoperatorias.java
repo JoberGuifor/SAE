@@ -22,7 +22,8 @@ public class PerguntaTransoperatorias extends PerguntaFragment {
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public void setTituloSecao(Button btTitulo){
-        btTitulo.setText("Informações transoperatórias");
+        //btTitulo.setText("Informações transoperatórias");
+        btTitulo.setText(R.string.titulo_transoperatorio);
         btTitulo.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_registroinfo, 0,0,0);
     }
 

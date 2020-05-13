@@ -23,6 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.google.android.material.navigation.NavigationView;
 import com.sae.sae.R;
 import com.sae.sae.activity.MainActivity;
 import com.sae.sae.adapter.PerguntaAdapter;
@@ -42,6 +43,7 @@ public class PerguntaFragment extends Fragment {
     protected int posicaoPergunta = 1;
     protected NavController navController;
     protected int proximaSessaoPerguntas;
+    protected NavigationView navigationView;
 
     public PerguntaFragment() {
         // Required empty public constructor
@@ -62,6 +64,9 @@ public class PerguntaFragment extends Fragment {
             Button btheader = view.findViewById(R.id.btheader);
             btheader.setBackgroundDrawable(getResources().getDrawable(getGradiente()));
         }
+
+        navigationView = ((MainActivity)getActivity()).findViewById(R.id.nav_view);
+
         recyclerView = view.findViewById(R.id.recyclerPergunta);
 
         recyclerView.setNestedScrollingEnabled(false);
@@ -87,7 +92,7 @@ public class PerguntaFragment extends Fragment {
         PerguntaAdapter adapter = new PerguntaAdapter(perguntas);
         recyclerView.setAdapter(adapter);
 
-        recyclerView.scrollToPosition(0);
+        recyclerView.smoothScrollToPosition(0);
 
         // Inflate the layout for this fragment
         return view;
@@ -119,7 +124,8 @@ public class PerguntaFragment extends Fragment {
                 registraResposta(v);
                 if(posicaoPergunta < perguntas.size()) {
                     posicaoPergunta++;
-                    recyclerView.scrollToPosition(getPosicaoObjPergunta());
+                    //recyclerView.getChildAdapterPosition(v);
+                    recyclerView.smoothScrollToPosition(getPosicaoObjPergunta());
                 }
 
             }
@@ -239,6 +245,9 @@ public class PerguntaFragment extends Fragment {
         }
 
         if(respostas.size() == perguntas.size() && getProximaSessaoPerguntas() > 0 ) {
+            if(navigationView!=null){
+                navigationView.setCheckedItem(getProximaSessaoPerguntas());
+            }
             navController.navigate(getProximaSessaoPerguntas());
         }
     }
@@ -260,7 +269,7 @@ public class PerguntaFragment extends Fragment {
             public void onClick(View v) {
                 if(posicaoPergunta > 1) {
                     posicaoPergunta--;
-                    recyclerView.scrollToPosition(getPosicaoObjPergunta());
+                    recyclerView.smoothScrollToPosition(getPosicaoObjPergunta());
                 }
             }
         });
@@ -310,6 +319,7 @@ public class PerguntaFragment extends Fragment {
             txt.setId(View.generateViewId());
             txt.setHint(opcoes.get(i));
             txt.setTextColor(R.color.cor_textos);
+
             txOpcoes.add(txt);
         }
 

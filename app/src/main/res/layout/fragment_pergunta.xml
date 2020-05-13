@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:background="#F3F9FF"
     android:orientation="horizontal"
+    app:layout_constraintTop_toTopOf="parent"
     tools:context=".ui.perguntas.PerguntaFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -24,7 +25,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bttitulo" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btheader"
@@ -39,14 +40,13 @@
 
     <Button
         android:id="@+id/bttitulo"
-        android:layout_width="246dp"
+        android:layout_width="260dp"
         android:layout_height="46dp"
         android:background="@drawable/botao_titulo"
-        android:drawableStart="@drawable/ic_titulo_resp"
+        android:drawableLeft="@drawable/ic_titulo_resp"
         android:padding="15dp"
-        android:text="Button"
         android:textColor="@color/cor_textos"
-        android:textSize="12dp"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"

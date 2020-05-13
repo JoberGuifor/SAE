@@ -28,6 +28,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.sae.sae.R;
 import com.sae.sae.activity.MainActivity;
@@ -44,7 +45,7 @@ public class PacienteFragment extends Fragment {
     private boolean onEditing = false;
     NavController navController;
 
-    private boolean testes = true;
+    private boolean testes = false;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -419,6 +420,7 @@ public class PacienteFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int index, long l) {
                 if(!onEditing) {
+                    ((NavigationView)((MainActivity)getActivity()).findViewById(R.id.nav_view)).setCheckedItem(R.id.nav_viasAereas);
                     navController.navigate(R.id.nav_viasAereas);
                     //Object clickItemObj = adapterView.getAdapter().getItem(index);
                     //Toast.makeText(view.getContext(), "You clicked " + clickItemObj.toString(), Toast.LENGTH_LONG).show();
