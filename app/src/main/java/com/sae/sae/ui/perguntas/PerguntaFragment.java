@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -93,6 +94,10 @@ public class PerguntaFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         recyclerView.smoothScrollToPosition(0);
+
+        DrawerLayout drawerLayout = ((MainActivity)getActivity()).getDrawer();
+
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
 
         // Inflate the layout for this fragment
         return view;

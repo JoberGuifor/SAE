@@ -2,6 +2,7 @@ package com.sae.sae.ui.paciente;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +20,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -37,6 +40,8 @@ import com.sae.sae.model.Paciente;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.sae.sae.R.drawable.gradiente_examesfisicos;
+
 public class PacienteFragment extends Fragment {
 
     private PacienteViewModel homeViewModel;
@@ -47,6 +52,7 @@ public class PacienteFragment extends Fragment {
 
     private boolean testes = false;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel = ViewModelProviders.of(this).get(PacienteViewModel.class);
@@ -56,6 +62,9 @@ public class PacienteFragment extends Fragment {
         pacienteListView = root.findViewById(R.id.list_view_pacientes);
 
         navController = Navigation.findNavController(this.getActivity(), R.id.nav_host_fragment);
+        DrawerLayout drawerLayout = ((MainActivity)getActivity()).getDrawer();
+
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 
         FloatingActionButton fab = (FloatingActionButton) root.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -69,13 +78,11 @@ public class PacienteFragment extends Fragment {
         if(ac!=null){
             ac.hide();
         }
-        //final TextView textView = root.findViewById(R.id.text_home);
-        //homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-        //    @Override
-        //    public void onChanged(@Nullable String s) {
-        //        textView.setText(s);
-        //    }
-        //});
+
+        Button btheader = root.findViewById(R.id.btheaderpacientes);
+        if(btheader!= null)
+            btheader.setBackgroundDrawable(getResources().getDrawable(gradiente_examesfisicos));
+
 
         return root;
     }

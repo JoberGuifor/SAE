@@ -18,17 +18,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/list_view_pacientes"
         app:srcCompat="@drawable/ic_add_black_24dp" />
-
-    <ListView
-        android:id="@+id/list_view_pacientes"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#F3F9FF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="vertical">
 
-    </ListView>
+        <Button
+            android:id="@+id/btheaderpacientes"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-1dp"
+            android:enabled="false"
+            android:text="Pacientes"
+            android:textColor="@color/cor_textos"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <ListView
+            android:id="@+id/list_view_pacientes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F3F9FF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </ListView>
+    </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

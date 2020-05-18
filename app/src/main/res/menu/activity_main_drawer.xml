@@ -4,7 +4,7 @@
     tools:showIn="navigation_view">
     <group android:checkableBehavior="all" >
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/nav_registroPaciente"
             android:icon="@drawable/ic_padrao"
             android:title="@string/menu_home"
             />
@@ -43,12 +43,6 @@
         <item android:id="@+id/nav_paciente" android:title="@string/menu_avaliacaoInicial">
             <menu>
                 <group android:checkableBehavior="all">
-                    <item
-                        android:id="@+id/nav_registroPaciente"
-                        android:icon="@drawable/ic_padrao"
-                        android:title="@string/menu_registroinfo"
-                        android:visible="false"/>
-
                     <item
                         android:id="@+id/nav_SinaisVitais"
                         android:icon="@drawable/ic_padrao"
