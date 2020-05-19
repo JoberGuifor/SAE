@@ -31,7 +31,8 @@
             android:layout_marginTop="-1dp"
             android:enabled="false"
             android:text="Pacientes"
-            android:textColor="@color/cor_textos"
+            android:textAllCaps="false"
+            android:textColor="@color/cor_titulo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

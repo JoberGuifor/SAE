@@ -1,7 +1,10 @@
 package com.sae.sae.activity;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -60,10 +63,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     public ActionBar getActionBarPrincipal(){
 
-        toolbar.setContentInsetStartWithNavigation((int) ((((CoordinatorLayout)toolbar.getParent().getParent()).getWidth() / 2) - ((toolbar.getTitle().length() * 15))));
-
+        //toolbar.setContentInsetStartWithNavigation((int) ((((CoordinatorLayout)toolbar.getParent().getParent()).getWidth() / 2) - ((toolbar.getTitle().length() * 15))));
+        //toolbar.setTitleMarginStart(toolbar.getWidth() / 3 );
         return getSupportActionBar();
     }
 

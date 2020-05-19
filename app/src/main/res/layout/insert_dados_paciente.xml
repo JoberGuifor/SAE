@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="3dp"
+            android:padding="10dp"
             android:text="Informações pré-operatórias"
             android:textSize="18sp" />
 
@@ -27,18 +27,21 @@
             android:id="@+id/edit_text_nome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="20dp"
             android:hint="Nome" />
 
         <EditText
             android:id="@+id/edit_text_sexo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="20dp"
             android:hint="Sexo" />
 
         <EditText
             android:id="@+id/edit_text_idade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="20dp"
             android:ems="10"
             android:hint="Idade"
             android:inputType="number" />
@@ -47,18 +50,21 @@
             android:id="@+id/edit_text_alergias"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="20dp"
             android:hint="Alergias" />
 
         <EditText
             android:id="@+id/edit_text_medicamentos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="20dp"
             android:hint="Uso de medicamentos" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:padding="5dp"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -72,7 +78,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:padding="3dp"
+                    android:padding="5dp"
                     android:text="     Comorbidades?     " />
 
                 <RadioGroup
@@ -80,6 +86,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center|center_horizontal"
+                    android:padding="5dp"
                     android:orientation="horizontal">
 
                     <RadioButton
@@ -110,13 +117,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:padding="3dp"
+                    android:padding="5dp"
                     android:text="    Uso de Drogas?    " />
 
                 <RadioGroup
                     android:id="@+id/rgUsoDrogas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="5dp"
                     android:gravity="center|center_horizontal"
                     android:orientation="horizontal">
 
@@ -143,6 +151,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:padding="5dp"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -156,7 +165,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:padding="3dp"
+                    android:padding="5dp"
                     android:text="   Uso de próteses?   " />
 
                 <RadioGroup
@@ -164,6 +173,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center|center_horizontal"
+                    android:padding="5dp"
                     android:orientation="horizontal">
 
                     <RadioButton
@@ -194,13 +204,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:padding="3dp"
+                    android:padding="5dp"
                     android:text="Limitação de mobilidade?" />
 
                 <RadioGroup
                     android:id="@+id/rgLimiteMobilidade"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="5dp"
                     android:gravity="center|center_horizontal"
                     android:orientation="horizontal">
 
@@ -228,7 +239,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="3dp"
+            android:padding="5dp"
             android:text="Deficiências de comunicação ?" />
 
         <RadioGroup
@@ -314,13 +325,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="3dp"
+            android:padding="10dp"
             android:text="Pressão arterial sistólica e diastólica" />
 
         <EditText
             android:id="@+id/edit_text_PA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="20dp"
             android:hint="PA=_____/_____mmHg" />
 
         <LinearLayout

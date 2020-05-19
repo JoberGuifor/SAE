@@ -72,6 +72,7 @@ public class PerguntaFragment extends Fragment {
 
         recyclerView.setNestedScrollingEnabled(false);
 
+
         navController = Navigation.findNavController(this.getActivity(), R.id.nav_host_fragment);
 
         Button bt = view.findViewById(R.id.bttitulo);
@@ -292,6 +293,8 @@ public class PerguntaFragment extends Fragment {
             rdbtn.setId(View.generateViewId());
             rdbtn.setText(opcoes.get(i));
             rdbtn.setTextColor(R.color.cor_textos);
+            //rdbtn.setPadding(0,5,0,5);
+            rdbtn.setTextSize(15);
             rbOpcoes.add(rdbtn);
         }
 
@@ -308,6 +311,8 @@ public class PerguntaFragment extends Fragment {
             ckbtn.setId(View.generateViewId());
             ckbtn.setText(opcoes.get(i));
             ckbtn.setTextColor(R.color.cor_textos);
+            //ckbtn.setPadding(0,5,0,5);
+            ckbtn.setTextSize(15);
             ckOpcoes.add(ckbtn);
         }
 
@@ -324,6 +329,8 @@ public class PerguntaFragment extends Fragment {
             txt.setId(View.generateViewId());
             txt.setHint(opcoes.get(i));
             txt.setTextColor(R.color.cor_textos);
+            //txt.setPadding(0,5,0,5);
+            txt.setTextSize(15);
 
             txOpcoes.add(txt);
         }

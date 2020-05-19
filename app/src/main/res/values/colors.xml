@@ -17,4 +17,6 @@
     <color name="color2ExameFisico">#AB74E6</color>
 
     <color name="cor_textos">#444444</color>
+
+    <color name="cor_titulo">#FFFFFF</color>
 </resources>

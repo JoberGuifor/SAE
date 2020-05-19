@@ -106,17 +106,17 @@ public class PerguntaFragmentSinaisVitais extends PerguntaFragment {
         this.perguntas.add(p);
 
         opcoes = new ArrayList<>();
-        opcoes.add("0");
+        opcoes.add("0 - Ausência de dor");
         opcoes.add("1");
         opcoes.add("2");
         opcoes.add("3");
         opcoes.add("4");
-        opcoes.add("5");
+        opcoes.add("5 - Dor moderada");
         opcoes.add("6");
         opcoes.add("7");
         opcoes.add("8");
         opcoes.add("9");
-        opcoes.add("10");
+        opcoes.add("10 - A pior dor possível");
 
         p = new Pergunta("Dor", evtProx, evtAnt, Pergunta.RADIO, this.getOpcoesRG(view, opcoes));;
         this.perguntas.add(p);
