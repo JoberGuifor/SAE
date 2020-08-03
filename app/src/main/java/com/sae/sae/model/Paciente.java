@@ -5,7 +5,11 @@ import java.util.List;
 public class Paciente {
     private String nome;
     private String sexo;
+    private String dtnasc;
     private int idade;
+    private String regInternacao;
+    private String convenio;
+    private String unidadeOrigem;
     private String alergias;
     private String medicamentos;
     private boolean comorbidades;
@@ -113,5 +117,37 @@ public class Paciente {
 
     public void setPressaoArterial(String pressaoArterial) {
         this.pressaoArterial = pressaoArterial;
+    }
+
+    public String getDtnasc() {
+        return dtnasc;
+    }
+
+    public void setDtnasc(String dtnasc) {
+        this.dtnasc = dtnasc;
+    }
+
+    public String getRegInternacao() {
+        return regInternacao;
+    }
+
+    public void setRegInternacao(String regInternacao) {
+        this.regInternacao = regInternacao;
+    }
+
+    public String getConvenio() {
+        return convenio;
+    }
+
+    public void setConvenio(String convenio) {
+        this.convenio = convenio;
+    }
+
+    public String getUnidadeOrigem() {
+        return unidadeOrigem;
+    }
+
+    public void setUnidadeOrigem(String unidadeOrigem) {
+        this.unidadeOrigem = unidadeOrigem;
     }
 }

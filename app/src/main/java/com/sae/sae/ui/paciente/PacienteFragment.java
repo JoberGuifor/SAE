@@ -35,6 +35,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.sae.sae.R;
 import com.sae.sae.activity.MainActivity;
+import com.sae.sae.model.GradientePadrao;
 import com.sae.sae.model.Paciente;
 
 import java.util.ArrayList;
@@ -50,7 +51,7 @@ public class PacienteFragment extends Fragment {
     private boolean onEditing = false;
     NavController navController;
 
-    private boolean testes = false;
+    private boolean testes = true;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -81,7 +82,7 @@ public class PacienteFragment extends Fragment {
 
         Button btheader = root.findViewById(R.id.btheaderpacientes);
         if(btheader!= null)
-            btheader.setBackgroundDrawable(getResources().getDrawable(gradiente_examesfisicos));
+            btheader.setBackgroundDrawable(GradientePadrao.getGradiente());
 
 
         return root;
@@ -184,6 +185,12 @@ public class PacienteFragment extends Fragment {
         final EditText txt_nome = inputUserNameView.findViewById(R.id.edit_text_nome);
         final EditText txt_sexo = inputUserNameView.findViewById(R.id.edit_text_sexo);
         final EditText txt_idade = inputUserNameView.findViewById(R.id.edit_text_idade);
+        final EditText txt_dtnasc = inputUserNameView.findViewById(R.id.edit_text_dtnasc);
+        final EditText txt_regInternacao = inputUserNameView.findViewById(R.id.edit_text_regInternacao);
+        final EditText txt_convenio = inputUserNameView.findViewById(R.id.edit_text_convenio);
+        final EditText txt_uniorigem = inputUserNameView.findViewById(R.id.edit_text_uniorigem);
+
+        /*
         final EditText txt_alergias = inputUserNameView.findViewById(R.id.edit_text_alergias);
         final EditText txt_medicamentos = inputUserNameView.findViewById(R.id.edit_text_medicamentos);
         final EditText txt_PressaoArterial = inputUserNameView.findViewById(R.id.edit_text_PA);
@@ -201,51 +208,18 @@ public class PacienteFragment extends Fragment {
         final CheckBox ck_ClassASAP5 = inputUserNameView.findViewById(R.id.ck_p5);
         final CheckBox ck_ClassASAP6 = inputUserNameView.findViewById(R.id.ck_p6);
 
+         */
+
         if(onEditing && pos >= 0){
             Paciente pac = pacientesList.get(pos);
 
             txt_nome.setText(pac.getNome());
             txt_sexo.setText(pac.getSexo());
             txt_idade.setText(""+pac.getIdade());
-            txt_alergias.setText(pac.getAlergias());
-            txt_medicamentos.setText(pac.getMedicamentos());
-            txt_PressaoArterial.setText(pac.getPressaoArterial());
-
-            rb_comorbidades.setChecked(pac.isComorbidades());
-            rb_usoDrogas.setChecked(pac.isUsaDrogras());
-            rb_mobilidade.setChecked(pac.isLimitacaoMobilidade());
-            rb_DefComunicacao.setChecked(pac.isDeficienciaComunicacao());
-            rb_Proteses.setChecked(pac.isUsaProteses());
-
-            for (int i = 0; i < pac.getClassASA().size(); i++) {
-                String classASA = pac.getClassASA().get(i);
-
-                if(classASA.equals(ck_ClassASAP1.getText())) {
-                    ck_ClassASAP1.setChecked(true);
-                    continue;
-                }
-                if(classASA.equals(ck_ClassASAP2.getText())) {
-                    ck_ClassASAP2.setChecked(true);
-                    continue;
-                }
-                if(classASA.equals(ck_ClassASAP3.getText())) {
-                    ck_ClassASAP3.setChecked(true);
-                    continue;
-                }
-                if(classASA.equals(ck_ClassASAP4.getText())) {
-                    ck_ClassASAP4.setChecked(true);
-                    continue;
-                }
-                if(classASA.equals(ck_ClassASAP5.getText())) {
-                    ck_ClassASAP5.setChecked(true);
-                    continue;
-                }
-                if(classASA.equals(ck_ClassASAP6.getText())) {
-                    ck_ClassASAP6.setChecked(true);
-                    continue;
-                }
-
-            }
+            txt_dtnasc.setText(pac.getDtnasc());
+            txt_regInternacao.setText(pac.getRegInternacao());
+            txt_convenio.setText(pac.getConvenio());
+            txt_uniorigem.setText(pac.getUnidadeOrigem());
 
         }
 
@@ -253,29 +227,6 @@ public class PacienteFragment extends Fragment {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                List<String> classificacaoASA = new ArrayList<>();
-
-                if (ck_ClassASAP1.isChecked()) {
-                    classificacaoASA.add(ck_ClassASAP1.getText().toString());
-                } else if(testes){
-                    classificacaoASA.add("P1");
-                }
-                if (ck_ClassASAP2.isChecked()) {
-                    classificacaoASA.add(ck_ClassASAP2.getText().toString());
-                }
-                if (ck_ClassASAP3.isChecked()) {
-                    classificacaoASA.add(ck_ClassASAP3.getText().toString());
-                }
-                if (ck_ClassASAP4.isChecked()) {
-                    classificacaoASA.add(ck_ClassASAP4.getText().toString());
-                }
-                if (ck_ClassASAP5.isChecked()) {
-                    classificacaoASA.add(ck_ClassASAP5.getText().toString());
-                }
-                if (ck_ClassASAP6.isChecked()) {
-                    classificacaoASA.add(ck_ClassASAP6.getText().toString());
-                }
 
                 final Paciente p = new Paciente();
 
@@ -313,46 +264,53 @@ public class PacienteFragment extends Fragment {
                         return;
                     }
                 }
-                if (txt_alergias.getText().length() > 0) {
-                    p.setAlergias(txt_alergias.getText().toString());
+                if (txt_dtnasc.getText().length() > 0) {
+                    p.setDtnasc(txt_dtnasc.getText().toString());
                 } else {
                     if (testes) {
-                        p.setAlergias("N/A");
+                        p.setDtnasc("01/10/1990");
                     } else {
-                        txt_alergias.requestFocus();
-                        Snackbar.make(v, "Informe as alergias do paciente!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                        txt_dtnasc.requestFocus();
+                        Snackbar.make(v, "Informe a data de nascimento do paciente!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                         return;
                     }
                 }
-                if (txt_medicamentos.getText().length() > 0) {
-                    p.setMedicamentos(txt_medicamentos.getText().toString());
+                if (txt_regInternacao.getText().length() > 0) {
+                    p.setRegInternacao(txt_regInternacao.getText().toString());
                 } else {
                     if (testes) {
-                        p.setMedicamentos("N/A");
+                        p.setRegInternacao("N/A");
                     } else {
-                        txt_medicamentos.requestFocus();
-                        Snackbar.make(v, "Informe os medicamentos do paciente!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                        txt_regInternacao.requestFocus();
+                        Snackbar.make(v, "Informe o registro da internação!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                         return;
                     }
                 }
-                p.setComorbidades(rb_comorbidades.isChecked());
-                p.setUsaProteses(rb_Proteses.isChecked());
-                p.setUsaDrogras(rb_usoDrogas.isChecked());
-                p.setDeficienciaComunicacao(rb_DefComunicacao.isChecked());
-                p.setLimitacaoMobilidade(rb_mobilidade.isChecked());
 
-                p.setClassASA(classificacaoASA);
-                if(txt_PressaoArterial.getText().length() > 0 ){
-                    p.setPressaoArterial(txt_PressaoArterial.getText().toString());
+                if(txt_convenio.getText().length() > 0 ){
+                    p.setConvenio(txt_convenio.getText().toString());
                 }else{
                     if(testes){
-                        p.setPressaoArterial("10/8");
+                        p.setConvenio("Unimed");
                     }else{
-                        txt_PressaoArterial.requestFocus();
-                        Snackbar.make(v, "Informe a pressão arterial do paciente!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                        txt_convenio.requestFocus();
+                        Snackbar.make(v, "Informe o convênio do paciente!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                         return;
                     }
                 }
+
+                if(txt_uniorigem.getText().length() > 0 ){
+                    p.setUnidadeOrigem(txt_uniorigem.getText().toString());
+                }else{
+                    if(testes){
+                        p.setUnidadeOrigem("AAA");
+                    }else{
+                        txt_uniorigem.requestFocus();
+                        Snackbar.make(v, "Informe a Unidade de origem!", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                        return;
+                    }
+                }
+
                 // Create a new string list to store listview item string.
                 List<String> nomesPacientes = new ArrayList<>();
 
@@ -429,8 +387,6 @@ public class PacienteFragment extends Fragment {
                 if(!onEditing) {
                     ((NavigationView)((MainActivity)getActivity()).findViewById(R.id.nav_view)).setCheckedItem(R.id.nav_viasAereas);
                     navController.navigate(R.id.nav_viasAereas);
-                    //Object clickItemObj = adapterView.getAdapter().getItem(index);
-                    //Toast.makeText(view.getContext(), "You clicked " + clickItemObj.toString(), Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -439,11 +395,7 @@ public class PacienteFragment extends Fragment {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 onEditing = true;
-                //Paciente pac = (Paciente) adapterView.getAdapter().getItem(i);
-                //Object clickItemObj = adapterView.getAdapter().getItem(i);
                 showEditDelete(view, i);
-                //Object clickItemObj = adapterView.getAdapter().getItem(i);
-                //Toast.makeText(view.getContext(), "You clicked LONG " + clickItemObj.toString(), Toast.LENGTH_LONG).show();
                 return false;
             }
         });
