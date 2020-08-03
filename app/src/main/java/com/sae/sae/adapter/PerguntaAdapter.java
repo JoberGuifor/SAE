@@ -4,23 +4,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sae.sae.R;
 import com.sae.sae.model.Pergunta;
 
 import java.util.List;
-
-import static com.sae.sae.R.id.divider;
 
 public class PerguntaAdapter extends RecyclerView.Adapter<PerguntaAdapter.MyViewHolder> {
 
@@ -45,6 +40,12 @@ public class PerguntaAdapter extends RecyclerView.Adapter<PerguntaAdapter.MyView
         holder.pergunta.setText(pergunta.getPergunta());
         holder.btProx.setOnClickListener(pergunta.getEventoProx());
         holder.btAnt.setOnClickListener(pergunta.getEventoAnterior());
+
+        //deixa tudo invisivel
+        for (int i = 0; i < holder.viewOpcoes.getChildCount(); i++) {
+            View a = holder.viewOpcoes.getChildAt(i);
+            a.setVisibility(View.GONE);
+        }
 
         if(pergunta.getEventoSim() != null)
             holder.btSim.setOnClickListener(pergunta.getEventoSim());

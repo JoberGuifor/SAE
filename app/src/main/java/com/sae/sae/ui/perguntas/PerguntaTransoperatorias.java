@@ -4,6 +4,7 @@ import android.os.Build;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.RadioButton;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
@@ -42,10 +43,104 @@ public class PerguntaTransoperatorias extends PerguntaFragment {
     public void preparaPerguntas(View.OnClickListener evtAnt, View.OnClickListener evtProx, View view){
         int i = 0;
         List<String>opcoes = new ArrayList<>();
+
+        opcoes = new ArrayList<>();
+        opcoes.add("Medicamentos");
+        opcoes.add("Soluções");
+        opcoes.add("Latex");
+
+        List<CheckBox> checks = this.getOpcoesCheck(view, opcoes);
+
+        opcoes = new ArrayList<>();
+        opcoes.add("outros");
+
+        Pergunta p = new Pergunta("Alergias:", evtProx, evtAnt, Pergunta.CKINPUT, checks, this.getOpcoesinput(view, opcoes), true);
+        this.perguntas.add(p);
+
+        opcoes = new ArrayList<>();
         opcoes.add("Digite aqui...");
 
-        Pergunta p = new Pergunta("Estado emocional:", evtProx, evtAnt);;
+        p = new Pergunta("Comorbidades:", evtProx, evtAnt, Pergunta.INPUT,
+                this.getOpcoesinput(view, opcoes),i);
         this.perguntas.add(p);
+
+        p = new Pergunta("Tabagismo:", evtProx, evtAnt);
+        this.perguntas.add(p);
+
+        opcoes = new ArrayList<>();
+        opcoes.add("Sim");
+        opcoes.add("Não");
+
+        List<RadioButton> radios = this.getOpcoesRG(view, opcoes);
+
+        opcoes = new ArrayList<>();
+        opcoes.add("Medicamentos...");
+
+        p = new Pergunta("Medicações de uso contínuo", evtProx, evtAnt, Pergunta.RGINPUT, radios, this.getOpcoesinput(view, opcoes) );
+        this.perguntas.add(p);
+
+        opcoes = new ArrayList<>();
+        opcoes.add("PA=_____/_____mmHg");
+
+        p = new Pergunta("Pressão arterial anterior à indução anestésica:", evtProx, evtAnt, Pergunta.INPUT,
+                this.getOpcoesinput(view, opcoes),i);
+        this.perguntas.add(p);
+
+        List<String> opcoesmob = new ArrayList<>();
+        opcoesmob.add("Sim");
+        opcoesmob.add("Não");
+
+        radios = null;
+        radios = this.getOpcoesRG(view, opcoesmob);
+
+        opcoesmob = new ArrayList<>();
+        opcoesmob.add("Digite aqui...");
+
+        p = new Pergunta("Limitação da mobilidade:", evtProx, evtAnt, Pergunta.RGINPUT, radios, this.getOpcoesinput(view, opcoesmob) );
+        this.perguntas.add(p);
+
+        List<String> opcoesprot = new ArrayList<>();
+        opcoesprot.add("Sim");
+        opcoesprot.add("Não");
+
+
+        List<RadioButton> radiosProt = this.getOpcoesRG(view, opcoesprot);
+
+        opcoesprot = new ArrayList<>();
+        opcoesprot.add("Digite aqui...");
+
+        p = new Pergunta("Uso de próteses:", evtProx, evtAnt, Pergunta.RGINPUT, radiosProt, this.getOpcoesinput(view, opcoesprot) );
+        this.perguntas.add(p);
+
+        opcoes = new ArrayList<>();
+        opcoes.add("Sim");
+        opcoes.add("Não");
+
+        radios = this.getOpcoesRG(view, opcoes);
+
+        opcoes = new ArrayList<>();
+        opcoes.add("Digite aqui...");
+
+        p = new Pergunta("Deficiências de comunicação:", evtProx, evtAnt, Pergunta.RGINPUT, radios, this.getOpcoesinput(view, opcoes) );
+        this.perguntas.add(p);
+
+        opcoes = new ArrayList<>();
+        opcoes.add("P1");
+        opcoes.add("P2");
+        opcoes.add("P3");
+        opcoes.add("P4");
+        opcoes.add("P5");
+        opcoes.add("P6");
+
+        p = new Pergunta("Classificação ASA:", evtProx, evtAnt, Pergunta.CHECK, this.getOpcoesCheck(view, opcoes), true);;
+        this.perguntas.add(p);
+
+        opcoes = new ArrayList<>();
+        opcoes.add("Digite aqui...");
+
+        p = new Pergunta("Estado emocional:", evtProx, evtAnt);
+        this.perguntas.add(p);
+
 
         p = new Pergunta("Tipo de anestesia:", evtProx, evtAnt, Pergunta.INPUT,
                 this.getOpcoesinput(view, opcoes),i);
