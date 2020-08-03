@@ -17,6 +17,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
 import com.sae.sae.R;
+import com.sae.sae.model.GradientePadrao;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         if(actionBar!=null){
-            actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.gradiente_paciente));
+            actionBar.setBackgroundDrawable(GradientePadrao.getGradiente());
         }
         //getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         //getSupportActionBar().setCustomView(R.layout.txt_layout);

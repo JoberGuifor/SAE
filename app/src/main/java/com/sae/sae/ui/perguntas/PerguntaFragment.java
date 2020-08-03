@@ -1,8 +1,18 @@
 package com.sae.sae.ui.perguntas;
 
 import android.annotation.SuppressLint;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
@@ -14,20 +24,11 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-
 import com.google.android.material.navigation.NavigationView;
 import com.sae.sae.R;
 import com.sae.sae.activity.MainActivity;
 import com.sae.sae.adapter.PerguntaAdapter;
+import com.sae.sae.model.GradientePadrao;
 import com.sae.sae.model.Pergunta;
 
 import java.util.ArrayList;
@@ -60,10 +61,13 @@ public class PerguntaFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_pergunta, container, false);
         ActionBar ac = ((MainActivity)getActivity()).getActionBarPrincipal();
         if(ac!=null){
+
+            GradientDrawable gradientDrawable = GradientePadrao.getGradiente();
+
             ac.show();
-            ac.setBackgroundDrawable(getResources().getDrawable(getGradiente()));
+            ac.setBackgroundDrawable(gradientDrawable);
             Button btheader = view.findViewById(R.id.btheader);
-            btheader.setBackgroundDrawable(getResources().getDrawable(getGradiente()));
+            btheader.setBackgroundDrawable(gradientDrawable);
         }
 
         navigationView = ((MainActivity)getActivity()).findViewById(R.id.nav_view);
