@@ -44,7 +44,7 @@ public class PerguntaFragmentSinaisVitais extends PerguntaFragment {
         List<String>opcoes = new ArrayList<>();
         opcoes.add("Afebril/normotérmico \n[36° e 37°C]");
         opcoes.add("Hipotermia [<36°C]");
-        opcoes.add("Febrícula [entre 37,1°C e 37,7°C]");
+        opcoes.add("Febrícula \n[entre 37,1°C e 37,7°C]");
         opcoes.add("Febre [acima 37,8°C]");
         opcoes.add("Hiperpirexia [>40°C]");
 
@@ -93,9 +93,9 @@ public class PerguntaFragmentSinaisVitais extends PerguntaFragment {
         this.perguntas.add(p);
 
         opcoes = new ArrayList<>();
-        opcoes.add("Normotenso (≤120/80mmHg)");
-        opcoes.add("Hipotenso (<90/60mmHg)");
-        opcoes.add("Hipertenso (≥140/90mmHg)");
+        opcoes.add("Normotenso \n(≤120/80mmHg)");
+        opcoes.add("Hipotenso \n(<90/60mmHg)");
+        opcoes.add("Hipertenso \n(≥140/90mmHg)");
 
         radios = this.getOpcoesRG(view, opcoes);
 

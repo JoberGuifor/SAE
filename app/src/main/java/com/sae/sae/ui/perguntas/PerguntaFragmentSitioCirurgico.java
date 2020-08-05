@@ -73,8 +73,8 @@ public class PerguntaFragmentSitioCirurgico extends PerguntaFragment {
 
         opcoes = new ArrayList<>();
         opcoes.add("Colostomia");
-        opcoes.add("ileostomia");
-        opcoes.add("urostomia");
+        opcoes.add("Ileostomia");
+        opcoes.add("Urostomia");
 
         List<CheckBox> checks = this.getOpcoesCheck(view, opcoes);
 

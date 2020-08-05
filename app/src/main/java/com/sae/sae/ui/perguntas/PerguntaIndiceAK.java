@@ -36,20 +36,20 @@ public class PerguntaIndiceAK extends PerguntaFragment {
 
         List<String> opcoes = new ArrayList<>();
         opcoes.add("Capaz de mover os quatro\n" +
-                "membros voluntariamente ou sob\n" +
-                "comandos");
-        opcoes.add("Capaz de mover somente dois\n" +
-                "membros voluntariamente ou sob\n" +
-                "comandos");
-        opcoes.add("Incapaz de mover os membros\n" +
-                "voluntariamente ou sob comandos");
+                "membros voluntariamente ou \n" +
+                "sob comandos");
+        opcoes.add("Capaz de mover somente \n" +
+                "dois membros voluntariamente \n" +
+                " ou sob comandos");
+        opcoes.add("Incapaz de mover os \n" +
+                "membros voluntariamente \nou sob comandos");
 
         Pergunta p = new Pergunta("Atividade motora", evtProx, evtAnt, Pergunta.RADIO, this.getOpcoesRG(view, opcoes));
         this.perguntas.add(p);
 
         opcoes = new ArrayList<>();
         opcoes.add("Capaz de respirar profundamente\n" +
-                "\nou tossir livremente");
+                "ou tossir livremente");
         opcoes.add("Dispnéia");
         opcoes.add("Apnéia");
 
@@ -57,18 +57,18 @@ public class PerguntaIndiceAK extends PerguntaFragment {
         this.perguntas.add(p);
 
         opcoes = new ArrayList<>();
-        opcoes.add("Pressão arterial em +-20mmHg do\n" +
-                "\nnível pré-anestésico");
+        opcoes.add("Pressão arterial em \n +-20mmHg do " +
+                "nível \npré-anestésico");
         opcoes.add("Pressão arterial entre \n" +
-                        "-20-50mmHg do nível pré-anestésico");
-        opcoes.add("Pressão arterial em +-50mmHg do\n" +
-                "nível pré-anestésico");
+                        "-20-50mmHg \ndo nível pré-anestésico");
+        opcoes.add("Pressão arterial em \n+-50mmHg do" +
+                "nível \npré-anestésico");
 
         p = new Pergunta("Circulação", evtProx, evtAnt, Pergunta.RADIO, this.getOpcoesRG(view, opcoes));
         this.perguntas.add(p);
 
         opcoes = new ArrayList<>();
-        opcoes.add("Lúcido, orientado no tempo e\n" +
+        opcoes.add("Lúcido, orientado no \ntempo e" +
                 "espaço");
         opcoes.add("Desperta se solicitado");
         opcoes.add("Não responde");
@@ -77,14 +77,13 @@ public class PerguntaIndiceAK extends PerguntaFragment {
         this.perguntas.add(p);
 
         opcoes = new ArrayList<>();
-        opcoes.add("Capaz de manter a saturação de 02\n" +
-                "acima de 92% respirando em ar\n" +
+        opcoes.add("Capaz de manter a saturação \nde 02 " +
+                "acima de 92% \nrespirando em ar\n" +
                 "ambiente");
-        opcoes.add("Necessita de O2 suplementar para\n" +
-                "manter a saturação de O2 acima de\n" +
-                "90%");
-        opcoes.add("Saturação de O2 abaixo de 90%\n" +
-                "mesmo com O2 suplementar.");
+        opcoes.add("Necessita de O2 suplementar \npara " +
+                "manter a saturação de \nO2 acima de 90%");
+        opcoes.add("Saturação de O2 \nabaixo de 90%" +
+                "\nmesmo com O2 suplementar.");
 
         p = new Pergunta("Saturação de oxigênio", evtProx, evtAnt, Pergunta.RADIO, this.getOpcoesRG(view, opcoes));
         this.perguntas.add(p);

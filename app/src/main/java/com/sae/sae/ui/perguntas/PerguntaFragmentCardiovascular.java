@@ -56,6 +56,7 @@ public class PerguntaFragmentCardiovascular extends PerguntaFragment {
         opcoes = new ArrayList<>();
         opcoes.add("Pulso cheio");
         opcoes.add("Pulso filiforme");
+        opcoes.add("Ausente");
 
         p = new Pergunta("Qual a característica da pulsação periférica?", evtProx, evtAnt, Pergunta.RADIO, this.getOpcoesRG(view, opcoes));;
         this.perguntas.add(p);
