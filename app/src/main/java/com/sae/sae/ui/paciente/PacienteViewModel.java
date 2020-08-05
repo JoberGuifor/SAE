@@ -10,7 +10,7 @@ public class PacienteViewModel extends ViewModel {
 
     public PacienteViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("SAE");
+        mText.setValue("COGITARE");
     }
 
     public LiveData<String> getText() {
