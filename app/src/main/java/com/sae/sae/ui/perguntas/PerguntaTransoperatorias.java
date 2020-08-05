@@ -138,9 +138,9 @@ public class PerguntaTransoperatorias extends PerguntaFragment {
         opcoes = new ArrayList<>();
         opcoes.add("Digite aqui...");
 
-        p = new Pergunta("Estado emocional:", evtProx, evtAnt);
+        p = new Pergunta("Estado emocional:", evtProx, evtAnt, Pergunta.INPUT,
+                this.getOpcoesinput(view, opcoes),i);
         this.perguntas.add(p);
-
 
         p = new Pergunta("Tipo de anestesia:", evtProx, evtAnt, Pergunta.INPUT,
                 this.getOpcoesinput(view, opcoes),i);
@@ -162,14 +162,19 @@ public class PerguntaTransoperatorias extends PerguntaFragment {
                 this.getOpcoesinput(view, opcoes),i);
         this.perguntas.add(p);
 
-        p = new Pergunta("Presença de dispositivos invasivos:\n Cateteres", evtProx, evtAnt);
+        opcoes = new ArrayList<>();
+        opcoes.add("Cateteres");
+        opcoes.add("Perviedade");
+        opcoes.add("Segurança");
+
+        checks = this.getOpcoesCheck(view, opcoes);
+
+        opcoes = new ArrayList<>();
+        opcoes.add("Digite aqui...");
+
+        p = new Pergunta("Presença de dispositivos invasivos:", evtProx, evtAnt, Pergunta.CKINPUT, checks, this.getOpcoesinput(view, opcoes), true);
         this.perguntas.add(p);
 
-        p = new Pergunta("Presença de dispositivos invasivos:\n Perviedade", evtProx, evtAnt);
-        this.perguntas.add(p);
-
-        p = new Pergunta("Presença de dispositivos invasivos:\n Segurança", evtProx, evtAnt);
-        this.perguntas.add(p);
 
     }
 

@@ -335,12 +335,13 @@ public class PerguntaFragment extends Fragment {
             txt.setTextColor(R.color.cor_textos);
             //txt.setPadding(0,5,0,5);
             txt.setTextSize(15);
-
+            txt.setCursorVisible(true);
             txOpcoes.add(txt);
         }
 
         return txOpcoes;
     }
+
 
     public void preparaPerguntas(View.OnClickListener evtAnt, View.OnClickListener evtProx, View view){
 

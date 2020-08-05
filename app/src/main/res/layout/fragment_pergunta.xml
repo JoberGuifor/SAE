@@ -10,49 +10,84 @@
     app:layout_constraintTop_toTopOf="parent"
     tools:context=".ui.perguntas.PerguntaFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerPergunta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fadeScrollbars="true"
-        android:isScrollContainer="false"
-        android:overScrollMode="never"
-        android:padding="10dp"
-        android:persistentDrawingCache="none"
-        android:scrollbarAlwaysDrawHorizontalTrack="false"
-        android:scrollbarAlwaysDrawVerticalTrack="false"
-        android:scrollbars="none"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btheader"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="0dp"
-        android:layout_height="23dp"
-        android:layout_marginTop="-1dp"
-        android:enabled="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="46dp">
 
-    <Button
-        android:id="@+id/bttitulo"
-        android:layout_width="260dp"
-        android:layout_height="46dp"
-        android:background="@drawable/botao_titulo"
-        android:drawableStart="@drawable/ic_titulo_resp"
-        android:drawableLeft="@drawable/ic_titulo_resp"
-        android:padding="15dp"
-        android:text=""
-        android:textAllCaps="false"
-        android:textColor="@color/cor_textos"
-        android:textSize="13sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/btheader"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="23dp"
+            android:layout_marginTop="-1dp"
+            android:enabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <Button
+            android:id="@+id/bttitulo"
+            android:layout_width="260dp"
+            android:layout_height="46dp"
+            android:background="@drawable/botao_titulo"
+            android:drawableStart="@drawable/ic_titulo_resp"
+            android:drawableLeft="@drawable/ic_titulo_resp"
+            android:padding="15dp"
+            android:text=""
+            android:textAllCaps="false"
+            android:textColor="@color/cor_textos"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <!--
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerPergunta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fadeScrollbars="true"
+            android:isScrollContainer="true"
+            android:overScrollMode="never"
+            android:padding="10dp"
+            android:persistentDrawingCache="none"
+            android:scrollbarAlwaysDrawHorizontalTrack="false"
+            android:scrollbarAlwaysDrawVerticalTrack="false"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bttitulo" />
+            -->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerPergunta"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fadeScrollbars="true"
+                android:isScrollContainer="false"
+                android:overScrollMode="never"
+                android:padding="10dp"
+                android:persistentDrawingCache="none"
+                android:scrollbarAlwaysDrawHorizontalTrack="false"
+                android:scrollbarAlwaysDrawVerticalTrack="false"
+                android:scrollbars="none"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
