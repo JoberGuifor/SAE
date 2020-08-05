@@ -42,7 +42,7 @@ public class PerguntaFragment extends Fragment {
     protected RecyclerView recyclerView;
     protected List<Pergunta> perguntas = new ArrayList<>();
     protected List<String> respostas = new ArrayList<>();
-    protected int posicaoPergunta = 1;
+    //protected int posicaoPergunta = 1;
     protected NavController navController;
     protected int proximaSessaoPerguntas;
     protected NavigationView navigationView;
@@ -98,7 +98,21 @@ public class PerguntaFragment extends Fragment {
         PerguntaAdapter adapter = new PerguntaAdapter(perguntas);
         recyclerView.setAdapter(adapter);
 
-        recyclerView.smoothScrollToPosition(0);
+        /*
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == RecyclerView.SCROLL_STATE_IDLE){
+                    posicaoPergunta = getCurrentItem();
+                    //System.console().printf("recyclerView" + position);
+                }
+            }
+        });
+
+         */
+
+        scrollPerguntaPosicao(0);
 
         DrawerLayout drawerLayout = ((MainActivity)getActivity()).getDrawer();
 
@@ -106,6 +120,46 @@ public class PerguntaFragment extends Fragment {
 
         // Inflate the layout for this fragment
         return view;
+    }
+
+
+
+    public boolean hasPreview() {
+        return getCurrentItem() > 0;
+    }
+
+    public boolean hasNext() {
+        return recyclerView.getAdapter() != null &&
+                getCurrentItem() < (recyclerView.getAdapter().getItemCount()- 1);
+    }
+
+    public void preview() {
+        int position = getCurrentItem();
+        if (position > 0)
+            setCurrentItem(position -1, true);
+    }
+
+    public void next() {
+        RecyclerView.Adapter adapter = recyclerView.getAdapter();
+        if (adapter == null)
+            return;
+
+        int position = getCurrentItem();
+        int count = adapter.getItemCount();
+        if (position < (count -1))
+            setCurrentItem(position + 1, true);
+    }
+
+    private int getCurrentItem(){
+        return ((LinearLayoutManager)recyclerView.getLayoutManager())
+                .findFirstVisibleItemPosition();
+    }
+
+    private void setCurrentItem(int position, boolean smooth){
+        if (smooth)
+            recyclerView.smoothScrollToPosition(position);
+        else
+            recyclerView.scrollToPosition(position);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -132,11 +186,12 @@ public class PerguntaFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 registraResposta(v);
-                if(posicaoPergunta < perguntas.size()) {
-                    posicaoPergunta++;
-                    //recyclerView.getChildAdapterPosition(v);
-                    recyclerView.smoothScrollToPosition(getPosicaoObjPergunta());
+                if(hasNext()) next();
+                /*
+                if(getCurrentItem()+1 < perguntas.size()) {
+                    scrollPerguntaPosicao(getCurrentItem()+1);
                 }
+                 */
 
             }
         });
@@ -144,14 +199,10 @@ public class PerguntaFragment extends Fragment {
         return evtProx;
     }
 
-    private int getPosicaoObjPergunta(){
-        return posicaoPergunta-1;
-    }
-
     private void registraResposta(String resp){
-        if (!perguntas.get(getPosicaoObjPergunta()).isRepondida()){
+        if (!perguntas.get(getCurrentItem()).isRepondida()){
             if(resp.length()>0){
-                perguntas.get(getPosicaoObjPergunta()).setRepondida(true);
+                perguntas.get(getCurrentItem()).setRepondida(true);
                 respostas.add(resp);
             }
         }
@@ -162,13 +213,13 @@ public class PerguntaFragment extends Fragment {
         if(v.getClass() == AppCompatButton.class) {
             String resp = (String) ((AppCompatButton) v).getText();
 
-            if(perguntas.size() >= posicaoPergunta && perguntas.get(getPosicaoObjPergunta()) != null ){
+            if(perguntas.size() >= getCurrentItem() && perguntas.get(getCurrentItem()) != null ){
 
-                if(perguntas.get(getPosicaoObjPergunta()).getTipo().equals(Pergunta.YESNO)) {
+                if(perguntas.get(getCurrentItem()).getTipo().equals(Pergunta.YESNO)) {
                     if(resp.equals("SIM") || resp.equals("NÃO")) {
                         registraResposta(resp);
                     }
-                }else if(perguntas.get(getPosicaoObjPergunta()).getTipo().equals(Pergunta.RADIO)){
+                }else if(perguntas.get(getCurrentItem()).getTipo().equals(Pergunta.RADIO)){
                     LinearLayout opcoes = ((View)v.getParent()).findViewById(R.id.viewOpcoes);
 
                     if(opcoes != null){
@@ -178,7 +229,7 @@ public class PerguntaFragment extends Fragment {
                             registraResposta((String) rb.getText());
                         }
                     }
-                }else if(perguntas.get(getPosicaoObjPergunta()).getTipo().equals(Pergunta.CHECK)) {
+                }else if(perguntas.get(getCurrentItem()).getTipo().equals(Pergunta.CHECK)) {
                     LinearLayout opcoes = ((View) v.getParent()).findViewById(R.id.viewOpcoes);
                     String respostaCK = "";
                     int pos = opcoes.getChildCount();
@@ -193,7 +244,7 @@ public class PerguntaFragment extends Fragment {
                     if (respostaCK.length() > 0) {
                         registraResposta(respostaCK);
                     }
-                }else if(perguntas.get(getPosicaoObjPergunta()).getTipo().equals(Pergunta.INPUT)){
+                }else if(perguntas.get(getCurrentItem()).getTipo().equals(Pergunta.INPUT)){
                     LinearLayout opcoes = ((View)v.getParent()).findViewById(R.id.viewOpcoes);
                     String respostaIn = "";
                     int pos = opcoes.getChildCount();
@@ -208,7 +259,7 @@ public class PerguntaFragment extends Fragment {
                     if(respostaIn.length() > 0){
                         registraResposta(respostaIn);
                     }
-                }else if(perguntas.get(getPosicaoObjPergunta()).getTipo().equals(Pergunta.CKINPUT)){
+                }else if(perguntas.get(getCurrentItem()).getTipo().equals(Pergunta.CKINPUT)){
                     LinearLayout opcoes = ((View)v.getParent()).findViewById(R.id.viewOpcoes);
                     String respostaCkIn = "";
                     int pos = opcoes.getChildCount();
@@ -228,7 +279,7 @@ public class PerguntaFragment extends Fragment {
                     if(respostaCkIn.length() > 0){
                         registraResposta(respostaCkIn);
                     }
-                }else if(perguntas.get(getPosicaoObjPergunta()).getTipo().equals(Pergunta.RGINPUT)){
+                }else if(perguntas.get(getCurrentItem()).getTipo().equals(Pergunta.RGINPUT)){
                     LinearLayout opcoes = ((View)v.getParent()).findViewById(R.id.viewOpcoes);
                     String respostaCkRg = "";
                     int pos = opcoes.getChildCount();
@@ -273,14 +324,23 @@ public class PerguntaFragment extends Fragment {
         return evtResp;
     }
 
+    private void scrollPerguntaPosicao(int pos){
+
+        recyclerView.smoothScrollToPosition(pos);
+        //recyclerView.scrollToPosition(pos);
+
+    }
+
     public View.OnClickListener getEventoVoltaPergunta(){
         View.OnClickListener evtAnt = (new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(posicaoPergunta > 1) {
-                    posicaoPergunta--;
-                    recyclerView.smoothScrollToPosition(getPosicaoObjPergunta());
+                if(hasPreview()) preview();
+                /*
+                if(getCurrentItem() > 0) {
+                    scrollPerguntaPosicao(getCurrentItem()-1);
                 }
+                 */
             }
         });
 
